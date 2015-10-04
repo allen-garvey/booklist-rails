@@ -1,0 +1,22 @@
+<div class='container'>
+	<h1>Add an Author</h1>
+
+	<%= form_for :author, url: authors_path do |f| %>
+	  <p>
+	    <%= f.label :first %><br>
+	    <%= f.text_field :first %>
+	  </p>
+	 <p>
+	    <%= f.label :middle %><br>
+	    <%= f.text_field :middle %>
+	  </p>
+	  <p>
+	    <%= f.label :last %><br>
+	    <%= f.text_field :last %>
+	  </p>
+	  <p>
+	    <%= f.submit %>
+	  </p>
+	<% end %>
+</div>
+

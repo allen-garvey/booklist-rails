@@ -1,0 +1,7 @@
+<div class="container">
+<%= link_to 'Back to All Books', books_path %>
+<h1><%= @book.title %></h1>
+
+<p><% concat @book.author.full_name if @book.author %></p>
+</div>
+

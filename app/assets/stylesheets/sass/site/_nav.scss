@@ -1,0 +1,11 @@
+/*
+ * Nav styles
+ */
+
+.nav{
+	@include font_heading;
+	@include font_size(3);
+	.brand{
+		@include font_brand;
+	}
+}
