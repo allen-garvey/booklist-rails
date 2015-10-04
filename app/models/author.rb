@@ -23,4 +23,7 @@ class Author < ActiveRecord::Base
 			formatted_middle = self.middle
 		end
 	end
+	def to_s
+		full_name
+	end
 end
