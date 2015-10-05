@@ -1,3 +1,16 @@
+<% if @book and @book.errors.any? %>
+	<div id="error_explanation">
+		<h2>
+			<%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:
+		</h2>
+		<ul>
+			<% @book.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
 <p>
 	<%= f.label :title %><br>
 	<%= f.text_field :title %>
@@ -10,6 +23,10 @@
 			<%= content_tag(:option, author.list_name, value: author.id, selected: selected) %>
 		<% end %>
 	<% end %>
+</p>
+<p>
+	<%= f.label :pre_rating %><br>
+	<%= f.number_field :pre_rating, {min: Book.pre_rating_min, max: Book.pre_rating_max} %>
 </p>
 <p>
 	<%= f.submit %>
