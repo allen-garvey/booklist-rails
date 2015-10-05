@@ -1,6 +1,5 @@
 <div class='container'>
 	<h1>Edit <%= @book.title %></h1>
-
 	<%= form_for :book, url: book_path(@book), method: :patch do |f| %>
 		<% if @book.errors.any? %>
 			<div id="error_explanation">
@@ -15,24 +14,7 @@
 			</div>
 		<% end %>
 
-	  <p>
-	    <%= f.label :title %><br>
-	    <%= f.text_field :title %>
-	  </p>
-	 <p>
-	 	<%= f.label :author_id %><br>
-		<%= f.select(:author_id, nil, {:include_blank => true}) do %>
-		  <% @authors.each do |author| -%>
-		  	<% 
-		  		selected = author.id == @book.author_id
-		  	 %>
-		    <%= content_tag(:option, author.list_name, value: author.id, selected: selected) %>
-		  <% end %>
-		<% end %>
-	 </p>
-	  <p>
-	    <%= f.submit %>
-	  </p>
+		<%= render 'form_fields', f: f %>
 	<% end %>
 </div>
 

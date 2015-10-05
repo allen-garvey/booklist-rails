@@ -1,0 +1,16 @@
+<p>
+	<%= f.label :title %><br>
+	<%= f.text_field :title %>
+</p>
+<p>
+	<%= f.label :author_id %><br>
+	<%= f.select(:author_id, nil, {:include_blank => true}) do %>
+		<% @authors.each do |author| -%>
+			<% selected = author.id == @book.author_id if @book %>
+			<%= content_tag(:option, author.list_name, value: author.id, selected: selected) %>
+		<% end %>
+	<% end %>
+</p>
+<p>
+	<%= f.submit %>
+</p>

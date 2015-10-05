@@ -2,21 +2,7 @@
 	<h1>Create a Book</h1>
 
 	<%= form_for :book, url: books_path do |f| %>
-	  <p>
-	    <%= f.label :title %><br>
-	    <%= f.text_field :title %>
-	  </p>
-	 <p>
-	 	<%= f.label :author_id %><br>
-		<%= f.select(:author_id, nil, {:include_blank => true}) do %>
-		  <% @authors.each do |author| -%>
-		    <%= content_tag(:option, author.list_name, value: author.id) %>
-		  <% end %>
-		<% end %>
-	 </p>
-	  <p>
-	    <%= f.submit %>
-	  </p>
+	  <%= render 'form_fields', f: f %>
 	<% end %>
 </div>
 
