@@ -1,0 +1,12 @@
+<div class="container">
+	<h1><%= @model[:name].pluralize %> Index</h1>
+	<%= link_to "Add #{@model[:name]}", new_book_path %>
+	
+	<%# link_to 'hello', send('new_book_path') %>
+	<ul>
+		<% @model[:items].each do |item| %>
+		<li><%= link_to item, item %></li>
+
+		<% end %>
+	</ul>
+</div>
