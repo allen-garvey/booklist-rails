@@ -1,12 +1,10 @@
 <div class="container">
 	<h1><%= @model[:name].pluralize %> Index</h1>
-	<%= link_to "Add #{@model[:name]}", new_book_path %>
+	<%= link_to "Add #{@model[:name]}", url_for(["new_#{@model[:name].downcase}"]) %>
 	
-	<%# link_to 'hello', send('new_book_path') %>
 	<ul>
 		<% @model[:items].each do |item| %>
-		<li><%= link_to item, item %></li>
-
+			<li><%= link_to item, item %> <%= link_to 'Edit', edit_polymorphic_url(item), {class: 'btn'} %></li>
 		<% end %>
 	</ul>
 </div>
