@@ -4,7 +4,7 @@
 	
 	<ul>
 		<% @model[:items].each do |item| %>
-			<li><%= link_to item, item %> <%= link_to 'Edit', edit_polymorphic_url(item), {class: 'btn'} %></li>
+			<li><%= link_to item, item %><%= link_to 'Edit', edit_polymorphic_url(item), {class: 'btn btn-default'} %></li>
 		<% end %>
 	</ul>
 </div>
