@@ -4,6 +4,7 @@
 
 @mixin font_brand{
 	font-family: $font_brand;
+	font-weight: 500;
 	@content;
 }
 @mixin font_heading{
