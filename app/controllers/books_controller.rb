@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
     def index
         @books = Book.all
+        @model = {name: 'Book', items: @books}
+        render :template => 'shared/index'
     end
     def show
         @book = Book.find(params[:id])

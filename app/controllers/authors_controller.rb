@@ -1,6 +1,8 @@
 class AuthorsController < ApplicationController
 	def index
   		@authors = Author.all
+        @model = {name: 'Author', items: @authors}
+        render :template => 'shared/index'
   	end
   	def show
         @author = Author.find(params[:id])
