@@ -14,5 +14,8 @@ class Book < ActiveRecord::Base
 	def init
 		self.date_added ||= Date.today
 	end
+	def to_s
+		self.title
+	end
 	
 end
