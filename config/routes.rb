@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   # get 'book/index'
   resources :books
   resources :authors
+
+  get 'settings/fields' => 'settings#fields'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'books#index'
+  root 'settings#fields'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
