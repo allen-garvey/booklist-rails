@@ -5,7 +5,33 @@
 .nav{
 	@include font_heading;
 	@include font_size(3);
-	.brand{
+	padding: 0.5rem 0 0; //some sort of extra padding on bottom for some reason
+	background-color: black;
+	margin-bottom: 1rem;
+		a{
+			color: lighten($color_primary_accent, 20%);
+			@include media_q_inverse(sm){
+				display: block;
+			}
+		}
+	.btn{
+		color: white;
+	}
+	.nav_heading{
 		@include font_brand;
+	}
+	.nav_links{
+		@include font_size(2);
+		font-weight: 100;
+		margin-top: 0.1em;
+		@include media_q(sm){
+			float: right;
+		}
+		a{
+			margin-right: 0.5rem;
+		}
+		a:last-of-type{
+			margin-right: 0;
+		}
 	}
 }
