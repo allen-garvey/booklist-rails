@@ -1,6 +1,6 @@
 <div class="container">
 	<h1><%= @model[:name].pluralize %> Index</h1>
-	<%= link_to "Add #{@model[:name]}", url_for(["new_#{@model[:name].downcase}"]) %>
+	<%= link_to "Add #{@model[:name]}", url_for(["new_#{@model[:name].downcase}"]), {class: 'btn btn-success'} %>
 	
 	<ul>
 		<% @model[:items].each do |item| %>
