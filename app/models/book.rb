@@ -10,6 +10,7 @@ class Book < ActiveRecord::Base
 	validates :pre_rating, numericality: {allow_blank: true, only_integer: true, less_than_or_equal_to: Book.pre_rating_max, greater_than_or_equal_to: Book.pre_rating_min}
 	belongs_to :author
 	belongs_to :classification
+	belongs_to :genre
 	after_initialize :init
 
 	def init
