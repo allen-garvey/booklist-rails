@@ -1,0 +1,8 @@
+<%= render 'shared/form_errors', item: @genre, name: 'genre' %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :name %><br>
+	<%= f.text_field :name %>
+<% end %>
+
+<%= render 'shared/submit_button', f: f %>
