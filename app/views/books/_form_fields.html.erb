@@ -15,11 +15,12 @@
 <% end %>
 <%= render layout: 'shared/form_group' do %>
 	<%= f.label :classification_id %>
-
-	<% @classifications.each do |classification| %>
-		<%= f.radio_button :classification_id, classification.id %>
-		<%= f.label :classification_id, classification, {value: classification.id}  %>
-	<% end %>
+	<div>
+		<% @classifications.each do |classification| %>
+			<%= f.radio_button :classification_id, classification.id %>
+			<%= f.label :classification_id, classification, {value: classification.id}  %>
+		<% end %>
+	</div>
 <% end %>
 <%= render layout: 'shared/form_group' do %>
 	<%= f.label :pre_rating %><br>
