@@ -2,7 +2,7 @@
 	<% flash.each do |key, value| %>
 		<div class="alert alert-<%= key %>"><%= value %></div>
 	<% end %>
-	<h1><%= @model[:name].pluralize.gsub(/_/, ' ') %> Index</h1>
+	<h1><%= @model[:name].pluralize.gsub(/_/, ' ') %></h1>
 	<%= link_to "Add #{@model[:name].gsub(/_/, ' ')}", url_for(["new_#{@model[:name].downcase}"]), {class: 'btn btn-success'} %>
 	
 	<ul>
