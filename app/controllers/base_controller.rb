@@ -12,6 +12,7 @@ class BaseController < ApplicationController
     def new
         related_fields
         @model_name = model_name
+        before_render_new
         render :template => 'shared/new'
     end
     def create
@@ -63,6 +64,9 @@ class BaseController < ApplicationController
     end
     def view_model
         instance_variable_get "@#{model_name}"
+    end
+    #set up any params you want to do before new template is rendered
+    def before_render_new
     end
     #return class of model
     # def model
