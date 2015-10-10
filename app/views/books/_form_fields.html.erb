@@ -25,6 +25,14 @@
 	<% end %>
 </p>
 <p>
+	<%= f.label :classification_id %>
+
+	<% @classifications.each do |classification| %>
+		<%= f.radio_button :classification_id, classification.id %>
+		<%= f.label :classification_id, classification, {value: classification.id}  %>
+	<% end %>
+</p>
+<p>
 	<%= f.label :pre_rating %><br>
 	<%= f.number_field :pre_rating, {min: Book.pre_rating_min, max: Book.pre_rating_max} %>
 </p>
