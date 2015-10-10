@@ -1,22 +1,14 @@
-class AuthorsController < ApplicationController
-	def index
-  		@authors = Author.all
-        @model = {name: 'Author', items: @authors}
-        render :template => 'shared/index'
-  	end
-  	def show
-        @author = Author.find(params[:id])
-    end
-    def new
-    end
-    def create
-        @author = Author.new(author_params)
-        @author.save
-        redirect_to @author
-    end
-
-    private
-    def author_params
+class AuthorsController < BaseController
+    protected
+    def model_params
         params.require(:author).permit(:first, :middle, :last)
+    end
+    def related_fields
+    end
+    def model
+        Author
+    end
+    def model_name
+        'author'
     end
 end
