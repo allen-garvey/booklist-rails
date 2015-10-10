@@ -2,7 +2,7 @@
 	<h1>Fields</h1>
 	<ul>
 		<% @fields.each do |field| %>
-			<li><%= link_to field.pluralize, url_for([field.pluralize.downcase]) %></li>
+			<li><%= link_to field.pluralize.gsub(/_/, ' '), url_for([field.pluralize.downcase]) %></li>
 		<% end %>
 	</ul>
 </div>
