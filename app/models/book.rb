@@ -13,6 +13,7 @@ class Book < ActiveRecord::Base
 	belongs_to :genre
 	has_many :ratings, dependent: :destroy
 	has_many :list_books, dependent: :destroy
+	has_many :lists, through: :list_books
 	
 	after_initialize :init
 	def init
