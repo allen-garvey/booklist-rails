@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :genres
   resources :ratings
   resources :lists
+  resources :list_books
 
   get 'settings/fields' => 'settings#fields'
   # The priority is based upon order of creation: first created -> highest priority.
