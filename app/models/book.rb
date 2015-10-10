@@ -11,8 +11,8 @@ class Book < ActiveRecord::Base
 	belongs_to :author
 	belongs_to :classification
 	belongs_to :genre
-	after_initialize :init
 	has_many :ratings
+	after_initialize :init
 	def init
 		self.date_added ||= Date.today
 	end
