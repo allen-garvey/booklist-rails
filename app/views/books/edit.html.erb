@@ -1,5 +1,5 @@
 <div class='container'>
-	<h1>Edit <%= @book.title %></h1>
+	<h1>Edit <%= @book %></h1>
 	<%= form_for :book, url: book_path(@book), method: :patch do |f| %>
 		<%= render 'form_fields', f: f %>
 	<% end %>
