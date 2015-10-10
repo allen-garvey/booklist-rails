@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
 	def fields
-		@fields = ['Book', 'Author']
+		@fields = ['Book', 'Author', 'Classification']
 	end
 end
