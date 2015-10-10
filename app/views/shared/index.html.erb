@@ -7,7 +7,10 @@
 			<li>
 				<%= link_to item, item %>
 				<%= link_to 'Edit', edit_polymorphic_url(item), {class: 'btn btn-default'} %>
-				<%= link_to 'Delete', polymorphic_url(item), {method: :delete, class: 'btn btn-danger'}  %>
+				<%= link_to 'Delete', polymorphic_url(item), {
+																method: :delete, class: 'btn btn-danger',
+																data: {confirm: "Are you sure you want to delete #{item}?"}
+															}  %>
 			</li>
 		<% end %>
 	</ul>
