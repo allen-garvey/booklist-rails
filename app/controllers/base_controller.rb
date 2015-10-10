@@ -48,7 +48,7 @@ class BaseController < ApplicationController
             flash[:success] = "#{@item.to_s} deleted"
             @item.destroy
         else
-            flash[:error] = "Item already deleted"
+            flash[:error] = "#{model_name.titleize} already deleted"
         end
  
         redirect_to url_for([model_name.pluralize])
