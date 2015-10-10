@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005050008) do
+ActiveRecord::Schema.define(version: 20151009222753) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "last"
@@ -23,13 +23,21 @@ ActiveRecord::Schema.define(version: 20151005050008) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "author_id"
     t.date     "date_added"
     t.integer  "pre_rating"
+    t.integer  "classification_id"
   end
 
   add_index "books", ["author_id"], name: "index_books_on_author_id"
+  add_index "books", ["classification_id"], name: "index_books_on_classification_id"
+
+  create_table "classifications", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
