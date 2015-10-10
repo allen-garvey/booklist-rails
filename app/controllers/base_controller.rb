@@ -20,7 +20,8 @@ class BaseController < ApplicationController
             redirect_to view_model
         else
             related_fields
-            render 'new'
+            @model_name = model_name
+            render :template => 'shared/new'
         end
     end
     def edit
@@ -45,10 +46,10 @@ class BaseController < ApplicationController
     def destroy
         @item = model().find_by(id: params[:id])
         if @item
-            flash[:success] = "#{@item.to_s} deleted"
+            flash[:info] = "#{@item.to_s} deleted"
             @item.destroy
         else
-            flash[:error] = "#{model_name.titleize} already deleted"
+            flash[:danger] = "#{model_name.titleize} already deleted"
         end
  
         redirect_to url_for([model_name.pluralize])
