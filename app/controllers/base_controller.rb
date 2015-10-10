@@ -12,13 +12,6 @@ class BaseController < ApplicationController
         @model_name = model_name
         render :template => 'shared/new'
     end
-    def edit
-        @item = model().find(params[:id])
-        related_fields
-        @model_name = model_name
-        set_view_model @item
-        render :template => 'shared/edit'
-    end
     def create
         view_model = model().new(model_params)
         if view_model.save
@@ -28,14 +21,22 @@ class BaseController < ApplicationController
             render 'new'
         end
     end
+    def edit
+        @item = model().find(params[:id])
+        related_fields
+        @model_name = model_name #used for shared edit view
+        set_view_model @item #used for local form_fields partial
+        render :template => 'shared/edit'
+    end
+    
     def update
         @item = model().find(params[:id])
         if @item.update(model_params)
             redirect_to @item
         else
             related_fields
-            @model_name = model_name
-            set_view_model @item
+            @model_name = model_name #used for shared edit view
+            set_view_model @item #used for local form_fields partial
             render :template => 'shared/edit'
         end
     end
