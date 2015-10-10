@@ -1,0 +1,8 @@
+<div class="container">
+	<%= link_to "Back to All #{@model_name.titleize.pluralize}", url_for([@model_name.pluralize]) %>
+	<h1><%= @item %></h1>
+
+	<%= yield %>
+
+	<p><%= link_to "Edit #{@item}", edit_polymorphic_url(@item) %></p>
+</div>
