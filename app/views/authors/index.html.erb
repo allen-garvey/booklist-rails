@@ -1,9 +1,0 @@
-<div class="container">
-	<h1>Authors Index</h1>
-	<%= link_to 'Add Author', new_author_path %>
-	<ul>
-		<% @authors.each do |author| %>
-		<li><%= link_to author.full_name, author_path(author) %></li>
-		<% end %>
-	</ul>
-</div>
