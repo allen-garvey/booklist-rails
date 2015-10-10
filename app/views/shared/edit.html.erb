@@ -1,0 +1,6 @@
+<div class='container'>
+	<h1>Edit <%= @item %></h1>
+	<%= form_for @model_name.to_sym, url: polymorphic_url(@item), method: :patch do |f| %>
+		<%= render 'form_fields', f: f %>
+	<% end %>
+</div>
