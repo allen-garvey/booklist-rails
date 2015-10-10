@@ -11,17 +11,14 @@ class Book < ActiveRecord::Base
 	belongs_to :author
 	belongs_to :classification
 	belongs_to :genre
-	has_many :ratings
-	after_destroy :destroy_related
+	has_many :ratings, dependent: :destroy
+	
 	after_initialize :init
 	def init
 		self.date_added ||= Date.today
 	end
 	def to_s
 		self.title
-	end
-	def destroy_related
-		Rating.delete_all([ "book_id = ?", self.id ])
 	end
 	
 end
