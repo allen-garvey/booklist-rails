@@ -43,8 +43,13 @@ class BaseController < ApplicationController
         end
     end
     def destroy
-        @item = model().find(params[:id])
-        @item.destroy
+        @item = model().find_by(id: params[:id])
+        if @item
+            flash[:success] = "#{@item.to_s} deleted"
+            @item.destroy
+        else
+            flash[:error] = "Item already deleted"
+        end
  
         redirect_to url_for([model_name.pluralize])
     end
