@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # get 'book/index'
   resources :books
   resources :authors
+  resources :classifications
 
   get 'settings/fields' => 'settings#fields'
   # The priority is based upon order of creation: first created -> highest priority.
