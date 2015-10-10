@@ -1,0 +1,20 @@
+<%= render 'shared/form_errors', item: @rating, name: 'rating' %>
+
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :book_id %><br/>
+	<%= f.select(:book_id, nil, {:include_blank => true}) do %>
+		<% @books.each do |book| %>
+			<% selected = book.id == @rating.book_id if @rating %>
+			<%= content_tag(:option, book, value: book.id, selected: selected) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :post_rating %><br/>
+	<%= f.number_field :post_rating, {min: Book.pre_rating_min, max: Book.pre_rating_max} %>
+<% end %>
+
+<%= render 'shared/submit_button', f: f %>
