@@ -1,0 +1,25 @@
+<%= render 'shared/form_errors', item: @list_book, name: 'list_book' %>
+
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :list_id %><br/>
+	<%= f.select(:list_id, nil, {:include_blank => true}) do %>
+		<% @lists.each do |list| %>
+			<% selected = list.id == @list_book.list_id if @list_book %>
+			<%= content_tag(:option, list, value: list.id, selected: selected) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :book_id %><br/>
+	<%= f.select(:book_id, nil, {:include_blank => true}) do %>
+		<% @books.each do |book| %>
+			<% selected = book.id == @list_book.book_id if @list_book %>
+			<%= content_tag(:option, book, value: book.id, selected: selected) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
+<%= render 'shared/submit_button', f: f %>
