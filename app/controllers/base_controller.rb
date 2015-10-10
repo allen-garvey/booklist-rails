@@ -5,7 +5,9 @@ class BaseController < ApplicationController
         render :template => 'shared/index'
     end
     def show
-        set_view_model model().find(params[:id])
+        @item = model().find(params[:id])
+        set_view_model @item
+        @model_name = model_name
     end
     def new
         related_fields
