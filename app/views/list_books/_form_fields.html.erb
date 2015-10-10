@@ -8,7 +8,7 @@
 				if @list_book
 					selected = list.id == @list_book.list_id	
 				elsif @list_id
-					selected = list.id == @list_id.to_i
+					selected = list.id == @list_id
 				end
 			%>
 			<%= content_tag(:option, list, value: list.id, selected: selected) %>

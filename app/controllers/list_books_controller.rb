@@ -17,6 +17,6 @@ class ListBooksController < BaseController
         'List_Book'
     end
     def before_render_new
-        @list_id = params[:list]
+        @list_id = params[:list].to_i
     end
 end
