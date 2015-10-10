@@ -15,11 +15,12 @@ class BaseController < ApplicationController
         render :template => 'shared/new'
     end
     def create
-        view_model = model().new(model_params)
-        if view_model.save
-            redirect_to view_model
+        model = model().new(model_params)
+        if model.save
+            redirect_to model
         else
             related_fields
+            set_view_model model
             @model_name = model_name
             render :template => 'shared/new'
         end
