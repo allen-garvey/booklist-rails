@@ -42,6 +42,12 @@ class BaseController < ApplicationController
             render :template => 'shared/edit'
         end
     end
+    def destroy
+        @item = model().find(params[:id])
+        @item.destroy
+ 
+        redirect_to url_for([model_name.pluralize])
+    end
     
     
     protected
