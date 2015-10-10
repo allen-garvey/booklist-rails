@@ -4,5 +4,8 @@
 
 	<%= yield %>
 
-	<p><%= link_to "Edit #{@item}", edit_polymorphic_url(@item) %></p>
+	<div>
+		<%= link_to "Edit", edit_polymorphic_url(@item), {class: 'btn btn-default'} %>
+		<%= link_to "Delete", polymorphic_url(@item), {class: 'btn btn-danger', method: :delete} %>
+	</div>
 </div>

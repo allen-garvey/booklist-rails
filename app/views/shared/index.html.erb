@@ -4,7 +4,11 @@
 	
 	<ul>
 		<% @model[:items].each do |item| %>
-			<li><%= link_to item, item %><%= link_to 'Edit', edit_polymorphic_url(item), {class: 'btn btn-default'} %></li>
+			<li>
+				<%= link_to item, item %>
+				<%= link_to 'Edit', edit_polymorphic_url(item), {class: 'btn btn-default'} %>
+				<%= link_to 'Delete', polymorphic_url(item), {method: :delete, class: 'btn btn-danger'}  %>
+			</li>
 		<% end %>
 	</ul>
 </div>
