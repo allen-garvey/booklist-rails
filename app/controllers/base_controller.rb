@@ -9,6 +9,8 @@ class BaseController < ApplicationController
     end
     def new
         related_fields
+        @model_name = model_name
+        render :template => 'shared/new'
     end
     def edit
         set_view_model model().find(params[:id])
