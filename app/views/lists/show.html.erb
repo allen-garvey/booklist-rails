@@ -1,4 +1,5 @@
 <%= render layout: 'shared/show' do %>
+	<%= link_to 'Add Book', new_list_book_url(list: @list.id), {class: 'btn btn-success'} %>
 	<ul>
 		<% @list.books.each do |book|  %>
 			<li><%= link_to book, book %></li>
