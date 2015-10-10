@@ -1,10 +1,10 @@
 <%= render 'shared/form_errors', item: @book, name: 'book' %>
 
-<p>
+<%= render layout: 'shared/form_group' do %>
 	<%= f.label :title %><br>
 	<%= f.text_field :title %>
-</p>
-<p>
+<% end %>
+<%= render layout: 'shared/form_group' do %>
 	<%= f.label :author_id %><br>
 	<%= f.select(:author_id, nil, {:include_blank => true}) do %>
 		<% @authors.each do |author| -%>
@@ -12,18 +12,18 @@
 			<%= content_tag(:option, author.list_name, value: author.id, selected: selected) %>
 		<% end %>
 	<% end %>
-</p>
-<p>
+<% end %>
+<%= render layout: 'shared/form_group' do %>
 	<%= f.label :classification_id %>
 
 	<% @classifications.each do |classification| %>
 		<%= f.radio_button :classification_id, classification.id %>
 		<%= f.label :classification_id, classification, {value: classification.id}  %>
 	<% end %>
-</p>
-<p>
+<% end %>
+<%= render layout: 'shared/form_group' do %>
 	<%= f.label :pre_rating %><br>
 	<%= f.number_field :pre_rating, {min: Book.pre_rating_min, max: Book.pre_rating_max} %>
-</p>
+<% end %>
 
 <%= render 'shared/submit_button', f: f %>

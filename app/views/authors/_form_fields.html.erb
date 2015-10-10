@@ -1,13 +1,13 @@
-<p>
+<%= render layout: 'shared/form_group' do %>
 	<%= f.label :first %><br>
 	<%= f.text_field :first %>
-</p>
-<p>
+<% end %>
+<%= render layout: 'shared/form_group' do %>
 	<%= f.label :middle %><br>
 	<%= f.text_field :middle %>
-</p>
-<p>
+<% end %>
+<%= render layout: 'shared/form_group' do %>
 	<%= f.label :last %><br>
 	<%= f.text_field :last %>
-</p>
+<% end %>
 <%= render 'shared/submit_button', f: f %>
