@@ -1,3 +1,7 @@
 <%= render layout: 'shared/show' do %>
-
+	<ul>
+		<% @list.books.each do |book|  %>
+			<li><%= link_to book, book %></li>
+		<% end %>
+	</ul>
 <% end %>
