@@ -2,7 +2,14 @@
 	<%= link_to 'Add Book', new_list_book_url(list: @list.id), {class: 'btn btn-success'} %>
 	<ul>
 		<% @list.books.each do |book|  %>
-			<li><%= link_to book, book %></li>
+			<% union_list_books = book.list_books & @list.list_books %>
+			<li>
+				<%= link_to book, book %>
+				<%= link_to 'Remove', polymorphic_url(union_list_books[0]), {
+																method: :delete, class: 'btn btn-danger',
+																data: {confirm: "Are you sure you want to remove #{book} from #{@list}?"}
+															}  if union_list_books.length > 0 %>
+			</li>
 		<% end %>
 	</ul>
 <% end %>
