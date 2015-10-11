@@ -1,5 +1,6 @@
 <div class="container">
 	<%= link_to "Back to All #{@model_name.titleize.pluralize}", url_for([@model_name.pluralize]) %>
+	<%= render 'shared/flash_alert' %>
 	<h1><%= @item %></h1>
 
 	<%= yield %>
