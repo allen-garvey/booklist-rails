@@ -20,7 +20,13 @@
 	<%= f.label :book_id %><br/>
 	<%= f.select(:book_id, nil, {:include_blank => true}) do %>
 		<% @books.each do |book| %>
-			<% selected = book.id == @list_book.book_id if @list_book %>
+			<%
+				if @list_book
+					selected = book.id == @list_book.book_id
+				elsif @book_id
+					selected = book.id == @book_id
+				end
+			%>
 			<%= content_tag(:option, book, value: book.id, selected: selected) %>
 		<% end %>
 	<% end %>
