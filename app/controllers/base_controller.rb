@@ -18,6 +18,7 @@ class BaseController < ApplicationController
     def create
         model = model().new(model_params)
         if model.save
+            flash[:success] = "#{model} created"
             redirect_to model
         else
             related_fields
@@ -37,6 +38,7 @@ class BaseController < ApplicationController
     def update
         @item = model().find(params[:id])
         if @item.update(model_params)
+            flash[:info] = "#{@item} updated"
             redirect_to @item
         else
             related_fields
@@ -48,7 +50,7 @@ class BaseController < ApplicationController
     def destroy
         @item = model().find_by(id: params[:id])
         if @item
-            flash[:info] = "#{@item.to_s} deleted"
+            flash[:info] = "#{@item} deleted"
             @item.destroy
         else
             flash[:danger] = "#{model_name.titleize} already deleted"
