@@ -22,16 +22,26 @@ class ListBooksController < BaseController
         super
     end
     def redirect_after_model_created(model)
-        redirect_to_caller
+        url = caller_url
+        if url
+            redirect_to url
+        else
+            super
+        end
     end
     def redirect_after_destroy
-        redirect_to_caller
+        url = caller_url
+        if url
+            redirect_to url
+        else
+            super
+        end
     end
-    def redirect_to_caller
+    def caller_url
         if params[:list] and params[:list].to_i > 0
-            redirect_to url_for :controller => 'lists', :action => 'show', :id => params[:list].to_i
+            url_for :controller => 'lists', :action => 'show', :id => params[:list].to_i
         elsif params[:book] and params[:book].to_i > 0
-            redirect_to url_for :controller => 'books', :action => 'show', :id => params[:book].to_i
+            url_for :controller => 'books', :action => 'show', :id => params[:book].to_i
         end
     end
 end
