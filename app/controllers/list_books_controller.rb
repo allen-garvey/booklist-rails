@@ -51,4 +51,10 @@ class ListBooksController < BaseController
             url_for :controller => 'books', :action => 'show', :id => params[:book].to_i
         end
     end
+    def flash_create_successful(model)
+        flash[:success] = "#{model.book} added to #{model.list}"
+    end
+    def flash_delete_successful(model)
+        flash[:info] = "#{model.book} removed from #{model.list}"
+    end
 end
