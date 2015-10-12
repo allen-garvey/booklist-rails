@@ -23,7 +23,7 @@ class BaseController < ApplicationController
             related_fields
             set_view_model model
             @model_name = model_name
-            render :template => 'shared/new'
+            render_create_failed
         end
     end
     def edit
@@ -68,6 +68,9 @@ class BaseController < ApplicationController
     end
     #set up any params you want to do before new template is rendered and call super
     def render_new
+        render :template => 'shared/new'
+    end
+    def render_create_failed
         render :template => 'shared/new'
     end
     #hook to redirect after model created
