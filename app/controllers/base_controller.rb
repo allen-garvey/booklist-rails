@@ -17,7 +17,7 @@ class BaseController < ApplicationController
     def create
         model = model().new(model_params)
         if model.save
-            flash[:success] = "#{model} created"
+            flash_create_successful model
             redirect_after_model_created model
         else
             related_fields
@@ -37,7 +37,7 @@ class BaseController < ApplicationController
     def update
         @item = model().find(params[:id])
         if @item.update(model_params)
-            flash[:info] = "#{@item} updated"
+            flash_update_successful @item
             redirect_to @item
         else
             related_fields
@@ -49,10 +49,10 @@ class BaseController < ApplicationController
     def destroy
         @item = model().find_by(id: params[:id])
         if @item
-            flash[:info] = "#{@item} deleted"
+            flash_delete_successful @item
             @item.destroy
         else
-            flash[:danger] = "#{model_name.titleize} already deleted"
+            flash_delete_failed
         end
 
         redirect_after_destroy
@@ -65,6 +65,19 @@ class BaseController < ApplicationController
     end
     def view_model
         instance_variable_get "@#{model_name}"
+    end
+    #set flash messages
+    def flash_create_successful(model)
+        flash[:success] = "#{model} created"
+    end
+    def flash_update_successful(model)
+        flash[:info] = "#{model} updated"
+    end
+    def flash_delete_successful(model)
+        flash[:info] = "#{model} deleted"
+    end
+    def flash_delete_failed
+        flash[:danger] = "#{model_name.titleize} already deleted"
     end
     #set up any params you want to do before new template is rendered and call super
     def render_new
