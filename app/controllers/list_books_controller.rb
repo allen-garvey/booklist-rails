@@ -17,14 +17,16 @@ class ListBooksController < BaseController
         'List_Book'
     end
     def render_new
-        @list_id = params[:list].to_i if params[:list].to_i > 0
-        @book_id = params[:book].to_i if params[:book].to_i > 0
+        set_caller_params
         super
     end
     def render_create_failed
+        set_caller_params
+        super
+    end
+    def set_caller_params
         @list_id = params[:list].to_i if params[:list].to_i > 0
         @book_id = params[:book].to_i if params[:book].to_i > 0
-        super
     end
     def redirect_after_model_created(model)
         url = caller_url
