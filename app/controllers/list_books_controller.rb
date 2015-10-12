@@ -16,9 +16,10 @@ class ListBooksController < BaseController
     def model_title
         'List_Book'
     end
-    def before_render_new
+    def render_new
         @list_id = params[:list].to_i
         @book_id = params[:book].to_i
+        super
     end
     def redirect_after_model_created(model)
         redirect_to_caller

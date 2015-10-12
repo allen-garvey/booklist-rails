@@ -12,8 +12,7 @@ class BaseController < ApplicationController
     def new
         related_fields
         @model_name = model_name
-        before_render_new
-        render :template => 'shared/new'
+        render_new
     end
     def create
         model = model().new(model_params)
@@ -67,8 +66,9 @@ class BaseController < ApplicationController
     def view_model
         instance_variable_get "@#{model_name}"
     end
-    #set up any params you want to do before new template is rendered
-    def before_render_new
+    #set up any params you want to do before new template is rendered and call super
+    def render_new
+        render :template => 'shared/new'
     end
     #hook to redirect after model created
     def redirect_after_model_created(model)
