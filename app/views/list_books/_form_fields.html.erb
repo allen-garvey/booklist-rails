@@ -32,5 +32,7 @@
 	<% end %>
 <% end %>
 
+<%= hidden_field_tag 'book', @book_id if @book_id and @book_id > 0  %>
+<%= hidden_field_tag 'list', @list_id if @list_id and @list_id > 0  %>
 
 <%= render 'shared/submit_button', f: f %>
