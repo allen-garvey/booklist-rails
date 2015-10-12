@@ -19,7 +19,7 @@ class BaseController < ApplicationController
         model = model().new(model_params)
         if model.save
             flash[:success] = "#{model} created"
-            redirect_to model
+            redirect_after_model_created model
         else
             related_fields
             set_view_model model
@@ -55,8 +55,8 @@ class BaseController < ApplicationController
         else
             flash[:danger] = "#{model_name.titleize} already deleted"
         end
- 
-        redirect_to url_for([model_name.pluralize])
+
+        redirect_after_destroy
     end
     
     
@@ -69,6 +69,14 @@ class BaseController < ApplicationController
     end
     #set up any params you want to do before new template is rendered
     def before_render_new
+    end
+    #hook to redirect after model created
+    def redirect_after_model_created(model)
+        redirect_to model
+    end
+    #hook to redirect after model destroyed
+    def redirect_after_destroy
+        redirect_to url_for([model_name.pluralize])
     end
     #return class of model
     # def model
