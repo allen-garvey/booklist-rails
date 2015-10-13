@@ -3,7 +3,7 @@
 	<p><%= @book.classification %></p>
 	<p><%= @book.genre %></p>
 	<p><%= @book.pre_rating %></p>
-	<p>Lists:</p>
+	<h3>Lists</h3>
 	<%= link_to 'Add to list', new_list_book_url(book: @book.id), {class: 'btn btn-success'} %>
 		<ul>
 			<% @book.lists.each do |list| %>
