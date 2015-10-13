@@ -1,4 +1,11 @@
 <%= render layout: 'shared/show' do %>
-	
+	<h3>Books</h3>
+	<ul>
+		<% @author.books.each do |book|  %>
+			<li>
+				<%= link_to book, book %>
+			</li>
+		<% end %>
+	</ul>
 <% end %>
 
