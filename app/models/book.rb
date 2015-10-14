@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+	include NormalizeBlankValues
 	def self.pre_rating_min
 		1
 	end

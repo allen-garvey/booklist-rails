@@ -1,4 +1,5 @@
 class Author < ActiveRecord::Base
+	include NormalizeBlankValues
 	validates :first, presence: true
 	has_many :books
 	def full_name
