@@ -1,0 +1,13 @@
+<%= render 'shared/form_errors', item: @library, name: 'library' %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :name %><br>
+	<%= f.text_field :name %>
+<% end %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :url %><br>
+	<%= f.text_field :url %>
+<% end %>
+
+<%= render 'shared/submit_button', f: f %>
