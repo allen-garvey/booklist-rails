@@ -5,7 +5,13 @@
 	<%= f.label :book_id %><br/>
 	<%= f.select(:book_id, nil, {:include_blank => true}) do %>
 		<% @books.each do |book| %>
-			<% selected = book.id == @rating.book_id if @rating %>
+			<%
+				if @rating
+					selected = book.id == @rating.book_id
+				elsif @book_id
+					selected = book.id == @book_id
+				end
+			%>
 			<%= content_tag(:option, book, value: book.id, selected: selected) %>
 		<% end %>
 	<% end %>
@@ -16,5 +22,7 @@
 	<%= f.label :post_rating %><br/>
 	<%= f.number_field :post_rating, {min: Book.pre_rating_min, max: Book.pre_rating_max} %>
 <% end %>
+
+<%= hidden_field_tag 'book', @book_id if @book_id %>
 
 <%= render 'shared/submit_button', f: f %>
