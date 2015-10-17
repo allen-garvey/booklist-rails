@@ -1,0 +1,18 @@
+<%= render 'shared/form_errors', item: @location, name: 'location' %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :name %><br>
+	<%= f.text_field :name %>
+<% end %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :library_id %><br/>
+	<%= f.select(:library_id, nil, {:include_blank => true}) do %>
+		<% @libraries.each do |library| %>
+			<% selected = library.id == @location.library_id if @location %>
+			<%= content_tag(:option, library, value: library.id, selected: selected) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= render 'shared/submit_button', f: f %>
