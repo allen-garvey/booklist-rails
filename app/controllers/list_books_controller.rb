@@ -28,22 +28,6 @@ class ListBooksController < BaseController
         @list_id = params[:list].to_i if params[:list].to_i > 0
         @book_id = params[:book].to_i if params[:book].to_i > 0
     end
-    def redirect_after_model_created(model)
-        url = caller_url
-        if url
-            redirect_to url
-        else
-            super
-        end
-    end
-    def redirect_after_destroy
-        url = caller_url
-        if url
-            redirect_to url
-        else
-            super
-        end
-    end
     def caller_url
         if params[:list] and params[:list].to_i > 0
             url_for :controller => 'lists', :action => 'show', :id => params[:list].to_i
