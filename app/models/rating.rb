@@ -9,6 +9,6 @@ class Rating < ActiveRecord::Base
 		self.date_added ||= Date.today
 	end
 	def to_s
-		"#{self.book} #{self.post_rating}"
+		"#{self.book} #{self.post_rating} #{self.date_added.strftime('%m/%d/%Y')}"
 	end
 end
