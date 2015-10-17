@@ -4,6 +4,6 @@ class Location < ActiveRecord::Base
   validates :library_id, presence: true
   validates :name, uniqueness: {scope: :library_id}
 	def to_s
-		self.name
+		"#{self.library} - #{self.name}"
 	end
 end
