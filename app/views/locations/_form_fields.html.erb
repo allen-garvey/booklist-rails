@@ -9,10 +9,18 @@
 	<%= f.label :library_id %><br/>
 	<%= f.select(:library_id, nil, {:include_blank => true}) do %>
 		<% @libraries.each do |library| %>
-			<% selected = library.id == @location.library_id if @location %>
+			<%
+				if @location
+					selected = library.id == @location.library_id	
+				elsif @library_id
+					selected = library.id == @library_id
+				end
+			%>
 			<%= content_tag(:option, library, value: library.id, selected: selected) %>
 		<% end %>
 	<% end %>
 <% end %>
+
+<%= hidden_field_tag 'library', @library_id if @library_id %>
 
 <%= render 'shared/submit_button', f: f %>
