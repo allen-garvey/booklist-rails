@@ -1,9 +1,16 @@
 <%= render layout: 'shared/show' do %>
 	<%= link_to 'Vist website', @library.url if @library.url %>
 	<h3>Locations</h3>
+	<%= link_to 'Add Location', new_location_url(library: @library.id), {class: 'btn btn-success'} %>
 	<ul>
 		<% @library.locations.each do |location| %>
-			<li><%= link_to location.name, url_for(location) %></li>
+			<li>
+				<%= link_to location.name, location %>
+				<%= link_to 'Delete', polymorphic_url(location, library: @library.id), {
+																method: :delete, class: 'btn btn-danger',
+																data: {confirm: "Are you sure you want to delete #{location}?"}
+															} %>
+			</li>
 		<% end %>
 	</ul>
 <% end %>
