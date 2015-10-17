@@ -88,11 +88,25 @@ class BaseController < ApplicationController
     end
     #hook to redirect after model created
     def redirect_after_model_created(model)
-        redirect_to model
+        url = caller_url
+        if url
+            redirect_to url
+        else
+            redirect_to model
+        end
     end
     #hook to redirect after model destroyed
     def redirect_after_destroy
-        redirect_to url_for([model_name.pluralize])
+        url = caller_url
+        if url
+            redirect_to url
+        else
+            redirect_to url_for([model_name.pluralize])
+        end
+    end
+    #hook to redirect to caller of create or destroy
+    def caller_url
+        nil
     end
     #return class of model
     # def model
