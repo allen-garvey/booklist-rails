@@ -3,7 +3,7 @@
 	<h3>Locations</h3>
 	<ul>
 		<% @library.locations.each do |location| %>
-			<li><%= link_to location, url_for(location) %></li>
+			<li><%= link_to location.name, url_for(location) %></li>
 		<% end %>
 	</ul>
 <% end %>
