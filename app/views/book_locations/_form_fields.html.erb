@@ -1,0 +1,44 @@
+<%= render 'shared/form_errors', item: @book_location, name: 'book location' %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :book_id %><br/>
+	<%= f.select(:book_id, nil, {:include_blank => true}) do %>
+		<% @books.each do |book| %>
+			<%
+				if @book_location
+					selected = book.id == @book_location.book_id
+				elsif @book_id
+					selected = book.id == @book_id
+				end
+			%>
+			<%= content_tag(:option, book, value: book.id, selected: selected) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :location_id %><br/>
+	<%= f.select(:location_id, nil, {:include_blank => true}) do %>
+		<% @locations.each do |location| %>
+			<%
+				if @book_location
+					selected = location.id == @book_location.location_id	
+				elsif @location_id
+					selected = location.id == @location_id
+				end
+			%>
+			<%= content_tag(:option, location, value: location.id, selected: selected) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :call_number %><br/>
+	<%= f.text_field :call_number %>
+<% end %>
+
+<%= hidden_field_tag 'book', @book_id if @book_id  %>
+<%= hidden_field_tag 'list', @location_id if @location_id %>
+<%= hidden_field_tag 'library', @book_id if @library_id  %>
+
+<%= render 'shared/submit_button', f: f %>
