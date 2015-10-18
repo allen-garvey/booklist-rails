@@ -79,14 +79,20 @@ class BaseController < ApplicationController
     def flash_delete_failed
         flash[:danger] = "#{model_name.titleize} already deleted"
     end
+    #initialize any params here for redirect after form submitted
+    def set_caller_params
+    end
     #set up any params you want to do before new template is rendered and call super
     def render_new
+        set_caller_params
         render :template => 'shared/new'
     end
     def render_edit
+        set_caller_params
         render :template => 'shared/edit'
     end
     def render_create_failed
+        set_caller_params
         render :template => 'shared/new'
     end
     #hook to redirect after model created
@@ -107,6 +113,7 @@ class BaseController < ApplicationController
         end
     end
     def redirect_after_update_failed
+        set_caller_params
         render :template => 'shared/edit'
     end
     #hook to redirect after model destroyed
