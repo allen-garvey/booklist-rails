@@ -16,14 +16,6 @@ class ListBooksController < BaseController
     def model_title
         'List_Book'
     end
-    def render_new
-        set_caller_params
-        super
-    end
-    def render_create_failed
-        set_caller_params
-        super
-    end
     def set_caller_params
         @list_id = params[:list].to_i if params[:list].to_i > 0
         @book_id = params[:book].to_i if params[:book].to_i > 0

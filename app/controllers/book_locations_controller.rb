@@ -16,22 +16,6 @@ class BookLocationsController < BaseController
     def model_title
         'Book_Location'
     end
-    def render_new
-        set_caller_params
-        super
-    end
-    def render_edit
-        set_caller_params
-        super
-    end
-    def redirect_after_update_failed
-        set_caller_params
-        super
-    end
-    def render_create_failed
-        set_caller_params
-        super
-    end
     def set_caller_params
         @location_id = params[:location].to_i if params[:location].to_i > 0
         @library_id = params[:library].to_i if params[:library].to_i > 0
