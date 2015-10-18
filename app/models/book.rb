@@ -12,9 +12,14 @@ class Book < ActiveRecord::Base
 	belongs_to :author
 	belongs_to :classification
 	belongs_to :genre
+	
 	has_many :ratings, dependent: :destroy
+	
 	has_many :list_books, dependent: :destroy
 	has_many :lists, through: :list_books
+	
+	has_many :book_locations, dependent: :destroy
+	has_many :locations, through: :book_locations
 	
 	after_initialize :init
 	def init
