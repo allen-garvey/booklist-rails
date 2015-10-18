@@ -1,6 +1,6 @@
 <%= render layout: 'shared/show' do %>
 	<div>
 		<h3>Books</h3>
-		<%= render 'book_list', location: @location %>
+		<%= render 'book_list', location: @location, url_params: {location: @location.id} %>
 	</div>
 <% end %>

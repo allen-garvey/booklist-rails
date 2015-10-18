@@ -10,6 +10,8 @@
 																method: :delete, class: 'btn btn-danger',
 																data: {confirm: "Are you sure you want to delete #{location}?"}
 															} %>
+				<h4>Books</h4>
+				<%= render 'locations/book_list', location: location, url_params: {library: @library.id, location: location.id} %>
 			</li>
 		<% end %>
 	</ul>
