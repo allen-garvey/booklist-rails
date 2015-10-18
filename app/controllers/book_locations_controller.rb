@@ -30,10 +30,10 @@ class BookLocationsController < BaseController
         @book_id = params[:book].to_i if params[:book].to_i > 0
     end
     def caller_url
-        if params[:location] and params[:location].to_i > 0
+        if params[:library] and params[:library].to_i > 0
+            url_for :controller => 'libraries', :action => 'show', :id => params[:library].to_i
+        elsif params[:location] and params[:location].to_i > 0
             url_for :controller => 'locations', :action => 'show', :id => params[:location].to_i
-        elsif params[:library] and params[:library].to_i > 0
-        	url_for :controller => 'libraries', :action => 'show', :id => params[:library].to_i
         elsif params[:book] and params[:book].to_i > 0
             url_for :controller => 'books', :action => 'show', :id => params[:book].to_i
         end
