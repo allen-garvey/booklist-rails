@@ -31,19 +31,19 @@ class BaseController < ApplicationController
         related_fields
         @model_name = model_name #used for shared edit view
         set_view_model @item #used for local form_fields partial
-        render :template => 'shared/edit'
+        render_edit
     end
     
     def update
         @item = model().find(params[:id])
         if @item.update(model_params)
             flash_update_successful @item
-            redirect_to @item
+            redirect_after_update(@item)
         else
             related_fields
             @model_name = model_name #used for shared edit view
             set_view_model @item #used for local form_fields partial
-            render :template => 'shared/edit'
+            redirect_after_update_failed
         end
     end
     def destroy
@@ -83,6 +83,9 @@ class BaseController < ApplicationController
     def render_new
         render :template => 'shared/new'
     end
+    def render_edit
+        render :template => 'shared/edit'
+    end
     def render_create_failed
         render :template => 'shared/new'
     end
@@ -94,6 +97,17 @@ class BaseController < ApplicationController
         else
             redirect_to model
         end
+    end
+    def redirect_after_update(model)
+        url = caller_url
+        if url
+            redirect_to url
+        else
+            redirect_to model
+        end
+    end
+    def redirect_after_update_failed
+        render :template => 'shared/edit'
     end
     #hook to redirect after model destroyed
     def redirect_after_destroy
