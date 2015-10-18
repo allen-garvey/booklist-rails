@@ -1,15 +1,17 @@
 <div class="container">
 	<%= link_to "Back to All #{@model_name.titleize.pluralize}", url_for([@model_name.pluralize]) %>
+
 	<%= render 'shared/flash_alert' %>
 	<h1><%= @item %></h1>
-
-	<%= yield %>
-
 	<div>
-		<%= link_to "Edit", edit_polymorphic_url(@item), {class: 'btn btn-default'} %>
+		<%= link_to "Edit", edit_polymorphic_url(@item), {class: 'btn btn-default btn-xs'} %>
 		<%= link_to "Delete", polymorphic_url(@item), 
-													{class: 'btn btn-danger', method: :delete, 
+													{class: 'btn btn-danger btn-xs', method: :delete, 
 														data: {confirm: "Are you sure you want to delete #{@item}?"}
 													} %>
 	</div>
+
+	<%= yield %>
+
+	
 </div>
