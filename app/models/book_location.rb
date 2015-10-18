@@ -1,4 +1,5 @@
 class BookLocation < ActiveRecord::Base
+  include NormalizeBlankValues
   belongs_to :book
   belongs_to :location
   validates :book_id, presence: true
