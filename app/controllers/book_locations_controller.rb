@@ -20,6 +20,14 @@ class BookLocationsController < BaseController
         set_caller_params
         super
     end
+    def render_edit
+        set_caller_params
+        super
+    end
+    def redirect_after_update_failed
+        set_caller_params
+        super
+    end
     def render_create_failed
         set_caller_params
         super
