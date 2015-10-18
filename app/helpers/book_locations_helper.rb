@@ -1,0 +1,2 @@
+module BookLocationsHelper
+end

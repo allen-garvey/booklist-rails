@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017020250) do
+ActiveRecord::Schema.define(version: 20151017185328) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "last"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20151017020250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "book_locations", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "location_id"
+    t.string   "call_number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "book_locations", ["book_id"], name: "index_book_locations_on_book_id"
+  add_index "book_locations", ["location_id"], name: "index_book_locations_on_location_id"
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
