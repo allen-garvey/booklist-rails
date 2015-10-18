@@ -3,32 +3,52 @@
 	<p><%= @book.classification %></p>
 	<p><%= @book.genre %></p>
 	<p><%= @book.pre_rating %></p>
-	<h3>Lists</h3>
-	<%= link_to 'Add to list', new_list_book_url(book: @book.id), {class: 'btn btn-success'} %>
-		<ul>
-			<% @book.lists.each do |list| %>
-				<% list_book = (list.list_books & @book.list_books)[0] %>
-				<li>
-					<%= link_to list, list %>
-					<%= link_to 'Remove', polymorphic_url(list_book, book: @book.id), {
-																method: :delete, class: 'btn btn-danger',
-																data: {confirm: "Are you sure you want to remove #{@book} from #{list}?"}
-															} %>
-				</li>
-	 		<% end %>
-	 	</ul>
-	<h3>Ratings</h3>
-	<%= link_to 'Add Rating', new_rating_url(book: @book.id), {class: 'btn btn-success'} %>
-	<ul>
-		<% @book.ratings.each do |rating| %>
-			<li>
-				<%= link_to rating, rating %>
-				<%= link_to 'Delete', polymorphic_url(rating, book: @book.id), {
-																method: :delete, class: 'btn btn-danger',
-																data: {confirm: "Are you sure you want to delete #{rating}?"}
-															} %>
-			</li>
-		<% end %>
-	</ul>
+	<div>
+		<h3>Locations</h3>
+		<%= link_to 'Add to location', new_book_location_url(book: @book.id), {class: 'btn btn-success'} %>
+			<ul>
+				<% @book.locations.each do |location| %>
+					<% book_location = (location.book_locations & @book.book_locations)[0] %>
+					<li>
+						<%= link_to location, location %>
+						<%= link_to 'Remove', polymorphic_url(book_location, book: @book.id), {
+																	method: :delete, class: 'btn btn-danger',
+																	data: {confirm: "Are you sure you want to remove #{@book} from #{location}?"}
+																} %>
+					</li>
+		 		<% end %>
+		 	</ul>
+	</div>
+	<div>
+		<h3>Lists</h3>
+		<%= link_to 'Add to list', new_list_book_url(book: @book.id), {class: 'btn btn-success'} %>
+			<ul>
+				<% @book.lists.each do |list| %>
+					<% list_book = (list.list_books & @book.list_books)[0] %>
+					<li>
+						<%= link_to list, list %>
+						<%= link_to 'Remove', polymorphic_url(list_book, book: @book.id), {
+																	method: :delete, class: 'btn btn-danger',
+																	data: {confirm: "Are you sure you want to remove #{@book} from #{list}?"}
+																} %>
+					</li>
+		 		<% end %>
+		 	</ul>
+	</div>
+	<div>
+		<h3>Ratings</h3>
+			<%= link_to 'Add Rating', new_rating_url(book: @book.id), {class: 'btn btn-success'} %>
+			<ul>
+				<% @book.ratings.each do |rating| %>
+					<li>
+						<%= link_to rating, rating %>
+						<%= link_to 'Delete', polymorphic_url(rating, book: @book.id), {
+																		method: :delete, class: 'btn btn-danger',
+																		data: {confirm: "Are you sure you want to delete #{rating}?"}
+																	} %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
 	<p><%= @book.date_added.strftime('%m/%d/%Y') %></p>
 <% end %>
