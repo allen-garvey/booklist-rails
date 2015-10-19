@@ -1,15 +1,15 @@
 <div class="container">
 	<%= render 'shared/flash_alert' %>
 	<h1><%= @model[:name].pluralize.gsub(/_/, ' ') %></h1>
-	<%= link_to "Add #{@model[:name].gsub(/_/, ' ')}", url_for(["new_#{@model[:name].downcase}"]), {class: 'btn btn-success'} %>
+	<%= link_to "Add #{@model[:name].gsub(/_/, ' ')}", url_for(["new_#{@model[:name].downcase}"]), {class: 'btn btn-success btn-sm'} %>
 	
 	<ul>
 		<% @model[:items].each do |item| %>
 			<li>
 				<%= link_to item, item %>
-				<%= link_to 'Edit', edit_polymorphic_url(item), {class: 'btn btn-default'} %>
+				<%= link_to 'Edit', edit_polymorphic_url(item), {class: 'btn btn-default btn-xs'} %>
 				<%= link_to 'Delete', polymorphic_url(item), {
-																method: :delete, class: 'btn btn-danger',
+																method: :delete, class: 'btn btn-danger btn-xs',
 																data: {confirm: "Are you sure you want to delete #{item}?"}
 															}  %>
 			</li>
