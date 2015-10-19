@@ -5,12 +5,12 @@
 	<ul>
 		<% @library.locations.each do |location| %>
 			<li>
-				<%= link_to location.name, location %>
+				<h4><%= link_to location.name, location %></h4>
 				<%= link_to 'Delete', polymorphic_url(location, library: @library.id), {
-																method: :delete, class: 'btn btn-danger',
+																method: :delete, class: 'btn btn-danger btn-xs',
 																data: {confirm: "Are you sure you want to delete #{location}?"}
 															} %>
-				<h4>Books</h4>
+				<h5>Books</h5>
 				<%= render 'locations/book_list', location: location, url_params: {library: @library.id, location: location.id} %>
 			</li>
 		<% end %>
