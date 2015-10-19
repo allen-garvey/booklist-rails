@@ -1,11 +1,11 @@
-<%= link_to 'Add book', new_book_location_url(url_params), {class: 'btn btn-success'} %>
+<%= link_to 'Add book', new_book_location_url(url_params), {class: 'btn btn-success btn-sm'} %>
 <ul>
 	<% location.books.each do |book| %>
 		<% book_location = (book.book_locations & location.book_locations)[0] %>
 		<li>
 			<%= link_to book, book %>
 			<%= link_to 'Remove', polymorphic_url(book_location, url_params), {
-																							method: :delete, class: 'btn btn-danger',
+																							method: :delete, class: 'btn btn-danger btn-xs',
 																							data: {confirm: "Are you sure you want to remove #{book} from #{location}?"}
 																							} %>
 		</li>
