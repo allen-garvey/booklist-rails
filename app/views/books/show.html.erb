@@ -1,5 +1,5 @@
 <%= render layout: 'shared/show' do %>
-	<p><%= @book.author %></p>
+	<p><%= link_to @book.author, @book.author if @book.author %></p>
 	<p><%= @book.classification %></p>
 	<p><%= @book.genre %></p>
 	<p><%= @book.pre_rating %></p>
