@@ -21,6 +21,10 @@ class BookLocation < ActiveRecord::Base
   end
 
   def to_s
-  	"#{self.book} #{self.location} - #{calculated_call_num}"
+    if calculated_call_num
+        "#{self.book} #{self.location} - #{calculated_call_num}"
+    else
+        "#{self.book} #{self.location}"
+    end
   end
 end
