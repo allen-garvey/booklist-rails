@@ -5,9 +5,7 @@ class BaseController < ApplicationController
         render :template => 'shared/index'
     end
     def show
-        @item = model().find(params[:id])
-        set_view_model @item
-        @model_name = model_name
+        prepare_for_show(model().find(params[:id]))
     end
     def new
         related_fields
@@ -81,6 +79,11 @@ class BaseController < ApplicationController
     end
     #initialize any params here for redirect after form submitted
     def set_caller_params
+    end
+    def prepare_for_show(item)
+        @item = item
+        set_view_model @item
+        @model_name = model_name
     end
     #set up any params you want to do before new template is rendered and call super
     def render_new

@@ -6,10 +6,6 @@ class Book < ActiveRecord::Base
 	def self.pre_rating_max
 		100
 	end
-	#the name for the library that will act as the bookshelf
-	def self.bookshelf_title
-		'Allen'
-	end
 
 	validates :title, presence: true
 	validates :pre_rating, numericality: {allow_blank: true, only_integer: true, less_than_or_equal_to: Book.pre_rating_max, greater_than_or_equal_to: Book.pre_rating_min}
