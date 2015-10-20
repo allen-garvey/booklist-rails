@@ -4,7 +4,7 @@ class LibrariesController < BaseController
         bookshelf = Library.find_by name: Library.bookshelf_name
         if bookshelf
             prepare_for_show(bookshelf)
-            render 'show'
+            render 'shared/show'
         else
             index
         end
