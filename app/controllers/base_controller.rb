@@ -2,10 +2,11 @@ class BaseController < ApplicationController
     def index
         @items = model().all
         @model = {name: model_title, items: @items}
-        render :template => 'shared/index'
+        render template: 'shared/index'
     end
     def show
         prepare_for_show(model().find(params[:id]))
+        render template: 'shared/show'
     end
     def new
         related_fields
