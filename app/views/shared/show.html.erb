@@ -11,7 +11,7 @@
 													} %>
 	</div>
 
-	<%= render "#{@model_name.pluralize}/show" if lookup_context.find_all("#{@model_name.pluralize}/_show").any? %>
+	<%= render partial: "#{@model_name.pluralize}/show" if lookup_context.find_all("#{@model_name.pluralize}/_show").any?  %>
 
 	
 </div>
