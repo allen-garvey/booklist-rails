@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :book_locations
 
-  get 'settings/fields' => 'settings#fields' as: 'fields'
+  get 'settings/fields', to: 'settings#fields', as: 'fields'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
