@@ -24,6 +24,8 @@ $font_code : Menlo, Monaco, Consolas, Inconsolata, 'Courier New', monospace;
 $color_primary_text : black !default;
 $color_primary_accent : dodgerblue !default;
 $color_primary_background : white !default;
+$color_nav_links : lighten($color_primary_accent, 20%);
+$color_nav_background: black;
 
 //layout
 $container_width : 950px;
