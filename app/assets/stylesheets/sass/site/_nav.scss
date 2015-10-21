@@ -6,10 +6,10 @@
 	@include font_heading;
 	@include font_size(3);
 	padding: 0.5rem 0 0; //some sort of extra padding on bottom for some reason
-	background-color: black;
+	background-color: $color_nav_background;
 	margin-bottom: 1rem;
 		a{
-			color: lighten($color_primary_accent, 20%);
+			color: $color_nav_links;
 			@include media_q_inverse(sm){
 				display: block;
 			}
