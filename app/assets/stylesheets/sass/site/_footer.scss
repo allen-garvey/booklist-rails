@@ -5,6 +5,7 @@
  .footer{
  	padding: 1rem 0;
  	background-color: $color_nav_background;
+ 	min-height: 100% - $total_height;
  	a{
 		color: $color_nav_links;
 
