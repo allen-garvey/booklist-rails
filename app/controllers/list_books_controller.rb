@@ -4,8 +4,8 @@ class ListBooksController < BaseController
         params.require(:list_book).permit(:book_id, :list_id, :list)
     end
     def related_fields
-        @books = Book.all
-        @lists = List.all
+        @books = Book.default_order
+        @lists = List.default_order
     end
     def model
         ListBook

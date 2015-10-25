@@ -4,7 +4,7 @@ class LocationsController < BaseController
         params.require(:location).permit(:name, :library_id)
     end
     def related_fields
-    	@libraries = Library.all
+    	@libraries = Library.default_order
     end
     def model
         Location

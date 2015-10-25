@@ -4,7 +4,7 @@ class RatingsController < BaseController
         params.require(:rating).permit(:book_id, :post_rating)
     end
     def related_fields
-        @books = Book.all
+        @books = Book.default_order
     end
     def model
         Rating

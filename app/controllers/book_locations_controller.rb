@@ -4,8 +4,8 @@ class BookLocationsController < BaseController
         params.require(:book_location).permit(:book_id, :location_id, :call_number)
     end
     def related_fields
-        @books = Book.all
-        @locations = Location.all
+        @books = Book.default_order
+        @locations = Location.default_order
     end
     def model
         BookLocation
