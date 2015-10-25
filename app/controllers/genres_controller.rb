@@ -3,8 +3,6 @@ class GenresController < BaseController
     def model_params
         params.require(:genre).permit(:name)
     end
-    def related_fields
-    end
     def model
         Genre
     end
