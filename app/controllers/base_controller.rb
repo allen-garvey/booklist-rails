@@ -1,6 +1,6 @@
 class BaseController < ApplicationController
     def index
-        @items = model().all
+        @items = model().default_order
         @model = {name: model_title, items: @items}
         render template: 'shared/index'
     end
