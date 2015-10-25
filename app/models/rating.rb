@@ -1,4 +1,7 @@
 class Rating < ActiveRecord::Base
+	def self.default_order
+		self.order(date_added: :desc)
+	end
 	belongs_to :book
 	validates :post_rating, presence: true
 	validates :book_id, presence: true

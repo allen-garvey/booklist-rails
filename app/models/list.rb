@@ -1,4 +1,7 @@
 class List < ActiveRecord::Base
+	def self.default_order
+		self.order(name: :asc)
+	end
 	validates :name, presence: true
 	validates :name, uniqueness: true
 	has_many :list_books, dependent: :destroy

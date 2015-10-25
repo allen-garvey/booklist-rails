@@ -1,5 +1,8 @@
 class Author < ActiveRecord::Base
 	include NormalizeBlankValues
+	def self.default_order
+		self.order(last: :asc, first: :asc, middle: :asc)
+	end
 	validates :first, presence: true
 	has_many :books
 	def full_name
