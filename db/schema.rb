@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151017185328) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authors", force: :cascade do |t|
     t.string   "last"
     t.string   "first"
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20151017185328) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "book_locations", ["book_id"], name: "index_book_locations_on_book_id"
-  add_index "book_locations", ["location_id"], name: "index_book_locations_on_location_id"
+  add_index "book_locations", ["book_id"], name: "index_book_locations_on_book_id", using: :btree
+  add_index "book_locations", ["location_id"], name: "index_book_locations_on_location_id", using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -43,9 +46,9 @@ ActiveRecord::Schema.define(version: 20151017185328) do
     t.integer  "genre_id"
   end
 
-  add_index "books", ["author_id"], name: "index_books_on_author_id"
-  add_index "books", ["classification_id"], name: "index_books_on_classification_id"
-  add_index "books", ["genre_id"], name: "index_books_on_genre_id"
+  add_index "books", ["author_id"], name: "index_books_on_author_id", using: :btree
+  add_index "books", ["classification_id"], name: "index_books_on_classification_id", using: :btree
+  add_index "books", ["genre_id"], name: "index_books_on_genre_id", using: :btree
 
   create_table "classifications", force: :cascade do |t|
     t.string   "name"
@@ -73,8 +76,8 @@ ActiveRecord::Schema.define(version: 20151017185328) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "list_books", ["book_id"], name: "index_list_books_on_book_id"
-  add_index "list_books", ["list_id"], name: "index_list_books_on_list_id"
+  add_index "list_books", ["book_id"], name: "index_list_books_on_book_id", using: :btree
+  add_index "list_books", ["list_id"], name: "index_list_books_on_list_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
@@ -89,7 +92,7 @@ ActiveRecord::Schema.define(version: 20151017185328) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "locations", ["library_id"], name: "index_locations_on_library_id"
+  add_index "locations", ["library_id"], name: "index_locations_on_library_id", using: :btree
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "post_rating"
@@ -99,6 +102,15 @@ ActiveRecord::Schema.define(version: 20151017185328) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "ratings", ["book_id"], name: "index_ratings_on_book_id"
+  add_index "ratings", ["book_id"], name: "index_ratings_on_book_id", using: :btree
 
+  add_foreign_key "book_locations", "books"
+  add_foreign_key "book_locations", "locations"
+  add_foreign_key "books", "authors"
+  add_foreign_key "books", "classifications"
+  add_foreign_key "books", "genres"
+  add_foreign_key "list_books", "books"
+  add_foreign_key "list_books", "lists"
+  add_foreign_key "locations", "libraries"
+  add_foreign_key "ratings", "books"
 end
