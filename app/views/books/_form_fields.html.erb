@@ -4,30 +4,36 @@
 	<%= f.label :title %><br/>
 	<%= f.text_field :title %>
 <% end %>
-<%= render layout: 'shared/form_group' do %>
-	<%= f.label :author_id %><br/>
-	<%= f.select(:author_id, nil, {:include_blank => true}) do %>
-		<% @authors.each do |author| %>
-			<% selected = author.id == @book.author_id if @book %>
-			<%= content_tag(:option, author.list_name, value: author.id, selected: selected) %>
+<% if !@authors.empty? %>
+	<%= render layout: 'shared/form_group' do %>
+		<%= f.label :author_id %><br/>
+		<%= f.select(:author_id, nil, {:include_blank => true}) do %>
+			<% @authors.each do |author| %>
+				<% selected = author.id == @book.author_id if @book %>
+				<%= content_tag(:option, author.list_name, value: author.id, selected: selected) %>
+			<% end %>
 		<% end %>
 	<% end %>
 <% end %>
-<%= render layout: 'shared/form_group' do %>
-	<%= f.label :classification_id %>
-	<div>
-		<% @classifications.each do |classification| %>
-			<%= f.radio_button :classification_id, classification.id %>
-			<%= f.label :classification_id, classification, {value: classification.id}  %>
-		<% end %>
-	</div>
+<% if !@classifications.empty? %>
+	<%= render layout: 'shared/form_group' do %>
+		<%= f.label :classification_id %>
+		<div>
+			<% @classifications.each do |classification| %>
+				<%= f.radio_button :classification_id, classification.id %>
+				<%= f.label :classification_id, classification, {value: classification.id}  %>
+			<% end %>
+		</div>
+	<% end %>
 <% end %>
-<%= render layout: 'shared/form_group' do %>
-	<%= f.label :genre_id %><br/>
-	<%= f.select(:genre_id, nil, {:include_blank => true}) do %>
-		<% @genres.each do |genre| %>
-			<% selected = genre == @book.genre_id if @book %>
-			<%= content_tag(:option, genre, value: genre.id, selected: selected) %>
+<% if !@genres.empty? %>
+	<%= render layout: 'shared/form_group' do %>
+		<%= f.label :genre_id %><br/>
+		<%= f.select(:genre_id, nil, {:include_blank => true}) do %>
+			<% @genres.each do |genre| %>
+				<% selected = genre == @book.genre_id if @book %>
+				<%= content_tag(:option, genre, value: genre.id, selected: selected) %>
+			<% end %>
 		<% end %>
 	<% end %>
 <% end %>
