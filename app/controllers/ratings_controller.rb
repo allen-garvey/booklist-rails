@@ -5,6 +5,9 @@ class RatingsController < BaseController
     end
     def related_fields
         @books = Book.default_order
+        if @books.empty?
+            @related_fields_error = "Please add a book first"
+        end
     end
     def model
         Rating

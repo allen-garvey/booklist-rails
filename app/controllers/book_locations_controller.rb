@@ -6,6 +6,13 @@ class BookLocationsController < BaseController
     def related_fields
         @books = Book.default_order
         @locations = Location.default_order
+        if @books.empty? and @locations.empty?
+            @related_fields_error = "Please add a book and location first"
+        elsif @books.empty?
+            @related_fields_error = "Please add a book first"
+        elsif @locations.empty?
+            @related_fields_error = "Please add a location first"
+        end
     end
     def model
         BookLocation

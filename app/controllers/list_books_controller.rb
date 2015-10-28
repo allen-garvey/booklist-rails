@@ -6,6 +6,13 @@ class ListBooksController < BaseController
     def related_fields
         @books = Book.default_order
         @lists = List.default_order
+        if @books.empty? and @lists.empty?
+            @related_fields_error = "Please add a book and create a list first"
+        elsif @books.empty?
+            @related_fields_error = "Please add a book first"
+        elsif @lists.empty?
+            @related_fields_error = "Please create a list first"
+        end
     end
     def model
         ListBook

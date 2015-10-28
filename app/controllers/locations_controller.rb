@@ -5,6 +5,9 @@ class LocationsController < BaseController
     end
     def related_fields
     	@libraries = Library.default_order
+        if @libraries.empty?
+            @related_fields_error = "Please add a library first"
+        end
     end
     def model
         Location
