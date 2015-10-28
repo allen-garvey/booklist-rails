@@ -10,8 +10,18 @@ class BaseController < ApplicationController
     end
     def new
         related_fields
-        @model_name = model_name
-        render_new
+        if defined? @related_fields_error
+            flash[:danger] = @related_fields_error
+            url = caller_url
+            if url
+                redirect_to url
+            else
+                index
+            end
+        else
+            @model_name = model_name
+            render_new
+        end
     end
     def create
         model = model().new(model_params)
