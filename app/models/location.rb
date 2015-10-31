@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
 	def self.default_order
-		self.order(name: :asc)
+		self.joins(:library).order('libraries.name asc, name asc')
 	end
 	belongs_to :library
 	validates :name, presence: true
