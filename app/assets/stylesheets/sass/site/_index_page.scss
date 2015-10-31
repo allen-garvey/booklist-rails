@@ -1,0 +1,25 @@
+/*
+ * Styles for default index view
+ */
+
+ .index_list{
+ 	li{
+ 		display: flex;
+ 		justify-content: space-between;
+ 		padding: 0.5em 0;
+ 		@include font_size(1);
+ 		&:nth-of-type(odd){
+ 			background-color: lighten($color_primary_accent, 25%);
+ 		}
+ 		a:first-child{
+ 			flex-grow: 1;
+ 		}
+ 		.btn_group{
+ 			text-align: right;
+ 			flex-basis: 150px;
+ 			align-self: center;
+ 		}
+ 	}
+ }
+
+
