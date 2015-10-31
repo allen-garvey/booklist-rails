@@ -48,4 +48,4 @@
 			<% end %>
 		</ul>
 	</div>
-<p><%= @book.date_added.strftime('%m/%d/%Y') %></p>
+<p><%= DateFormatter.default_format(@book.date_added) %></p>

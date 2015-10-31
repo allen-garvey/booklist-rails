@@ -1,1 +1,1 @@
-<p><%= @rating.date_added.strftime('%m/%d/%Y') %></p>
+<p><%= DateFormatter.default_format(@rating.date_added) %></p>
