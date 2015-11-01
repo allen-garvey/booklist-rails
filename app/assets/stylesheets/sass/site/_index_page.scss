@@ -9,7 +9,7 @@
  		padding: 0.5em 0;
  		@include font_size(1);
  		&:nth-of-type(odd){
- 			background-color: lighten($color_primary_accent, 25%);
+ 			background-color: lighten($color_secondary_accent, 35%);
  		}
  		a:first-child{
  			flex-grow: 1;
