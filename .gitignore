@@ -63,3 +63,8 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+*.jpg
+*.jpeg
+*.png
+*.svg
