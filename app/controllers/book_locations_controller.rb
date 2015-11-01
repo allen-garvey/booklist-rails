@@ -6,6 +6,12 @@ class BookLocationsController < BaseController
     def related_fields
         @books = Book.default_order
         @locations = Location.default_order
+        if defined? @location_id
+            @books = @books - Book.joins(:book_locations).where("book_locations.location_id = ?", @location_id)
+        end
+        if defined? @book_id
+            @locations = @locations - Location.joins(:book_locations).where("book_locations.book_id = ?", @book_id)
+        end
         if @books.empty? and @locations.empty?
             @related_fields_error = "Please add a book and location first"
         elsif @books.empty?

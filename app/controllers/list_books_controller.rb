@@ -6,6 +6,12 @@ class ListBooksController < BaseController
     def related_fields
         @books = Book.default_order
         @lists = List.default_order
+        if defined? @list_id
+            @books = @books - Book.joins(:list_books).where('list_books.list_id = ?', @list_id)
+        end
+        if defined? @book_id
+            @lists = @lists - List.joins(:list_books).where("list_books.book_id = ?", @book_id)
+        end
         if @books.empty? and @lists.empty?
             @related_fields_error = "Please add a book and create a list first"
         elsif @books.empty?
