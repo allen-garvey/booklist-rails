@@ -29,17 +29,17 @@ class BaseController < ApplicationController
             flash_create_successful model
             redirect_after_model_created model
         else
-            related_fields
             set_view_model model
             @model_name = model_name
+            related_fields
             render_create_failed
         end
     end
     def edit
         @item = model().find(params[:id])
-        related_fields
         @model_name = model_name #used for shared edit view
         set_view_model @item #used for local form_fields partial
+        related_fields
         render_edit
     end
     
@@ -49,9 +49,9 @@ class BaseController < ApplicationController
             flash_update_successful @item
             redirect_after_update(@item)
         else
-            related_fields
             @model_name = model_name #used for shared edit view
             set_view_model @item #used for local form_fields partial
+            related_fields
             redirect_after_update_failed
         end
     end
