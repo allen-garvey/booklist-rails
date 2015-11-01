@@ -9,6 +9,7 @@ class BaseController < ApplicationController
         render template: 'shared/show'
     end
     def new
+        set_caller_params
         related_fields
         if defined? @related_fields_error
             flash[:danger] = @related_fields_error
@@ -31,6 +32,7 @@ class BaseController < ApplicationController
         else
             set_view_model model
             @model_name = model_name
+            set_caller_params
             related_fields
             render_create_failed
         end
@@ -39,6 +41,7 @@ class BaseController < ApplicationController
         @item = model().find(params[:id])
         @model_name = model_name #used for shared edit view
         set_view_model @item #used for local form_fields partial
+        set_caller_params
         related_fields
         render_edit
     end
@@ -51,6 +54,7 @@ class BaseController < ApplicationController
         else
             @model_name = model_name #used for shared edit view
             set_view_model @item #used for local form_fields partial
+            set_caller_params
             related_fields
             redirect_after_update_failed
         end
@@ -98,15 +102,12 @@ class BaseController < ApplicationController
     end
     #set up any params you want to do before new template is rendered and call super
     def render_new
-        set_caller_params
         render :template => 'shared/new'
     end
     def render_edit
-        set_caller_params
         render :template => 'shared/edit'
     end
     def render_create_failed
-        set_caller_params
         render :template => 'shared/new'
     end
     #hook to redirect after model created
@@ -127,7 +128,6 @@ class BaseController < ApplicationController
         end
     end
     def redirect_after_update_failed
-        set_caller_params
         render :template => 'shared/edit'
     end
     #hook to redirect after model destroyed
