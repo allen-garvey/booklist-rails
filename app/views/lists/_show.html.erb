@@ -6,7 +6,7 @@
 		<li>
 			<%= link_to book, book %>
 			<%= link_to 'Remove', polymorphic_url(list_book, list: @list.id), {
-															method: :delete, class: 'btn btn-danger',
+															method: :delete, class: 'btn btn-danger btn-xs',
 															data: {confirm: "Are you sure you want to remove #{book} from #{@list}?"}
 														} %>
 		</li>
