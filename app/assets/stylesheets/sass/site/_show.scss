@@ -1,0 +1,14 @@
+/*
+ * Styles for show pages
+ */
+
+ .show_categories_list{
+ 	&>li{
+ 		margin-bottom: 2em;
+ 	}
+ 	.show_subcategory{
+ 		padding-left: 2em;
+ 	}
+ }
+
+
