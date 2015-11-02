@@ -2,14 +2,17 @@
 	<%= link_to "Back to All #{@model_name.titleize.pluralize}", url_for([@model_name.pluralize]) %>
 
 	<%= render 'shared/flash_alert' %>
-	<h1><%= @item %></h1>
-	<div>
-		<%= link_to "Edit", edit_polymorphic_url(@item), {class: 'btn btn-default btn-xs'} %>
-		<%= link_to "Delete", polymorphic_url(@item), 
-													{class: 'btn btn-danger btn-xs', method: :delete, 
-														data: {confirm: "Are you sure you want to delete #{@item}?"}
-													} %>
+	<div class="show_header">
+		<h1 class="heading"><%= @item %></h1>
+		<div class="btn_group">
+			<%= link_to "Edit", edit_polymorphic_url(@item), {class: 'btn btn-default btn-xs'} %>
+			<%= link_to "Delete", polymorphic_url(@item), 
+														{class: 'btn btn-danger btn-xs', method: :delete, 
+															data: {confirm: "Are you sure you want to delete #{@item}?"}
+														} %>
+		</div>	
 	</div>
+	
 
 	<%= render partial: "#{@model_name.pluralize}/show" if lookup_context.find_all("#{@model_name.pluralize}/_show").any?  %>
 
