@@ -1,6 +1,24 @@
 /*
  * Styles for show pages
  */
+%show_category{
+	display: flex;
+	.heading{
+	}
+	.btn_group{
+		text-align: right;
+		flex-basis: 150px;
+		align-self: center;
+ 	}
+}
+
+ .show_header{
+ 	@extend %show_category;
+ 	margin-bottom: 1em;
+ }
+ .show_category_header{
+ 	@extend %show_category;
+ }
 
  .show_categories_list{
  	&>li{
