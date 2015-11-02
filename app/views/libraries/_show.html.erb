@@ -1,7 +1,11 @@
 <%= link_to 'Vist website', @library.url if @library.url %>
 <div>
-	<h2>Locations</h2>
-	<%= link_to 'Add Location', new_location_url(library: @library.id), {class: 'btn btn-success'} %>
+	<div class="show_category_header">
+		<h2 class="heading">Locations</h2>
+		<div class="btn_group">
+			<%= link_to 'Add Location', new_location_url(library: @library.id), {class: 'btn btn-success'} %>
+		</div>
+	</div>
 	<ul class='show_categories_list'>
 		<% @library.locations.each do |location| %>
 			<li>
