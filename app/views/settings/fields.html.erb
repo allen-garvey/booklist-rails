@@ -1,6 +1,6 @@
 <div class='container'>
 	<h1>Fields</h1>
-	<ul>
+	<ul class="fields_list">
 		<% @fields.each do |field| %>
 			<li><%= link_to field.pluralize.gsub(/_/, ' '), url_for([field.pluralize.downcase]) %></li>
 		<% end %>
