@@ -24,5 +24,14 @@
  		width: 70%;
  	}
  }
-
+.search_container{
+	@include font_size(1);
+	padding-top: 1rem;
+	input{
+		width: 100%;
+		@include media_q(sm){
+			width: 15em;
+		}
+	}
+}
 
