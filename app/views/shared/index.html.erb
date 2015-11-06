@@ -2,7 +2,7 @@
 	<%= render 'shared/flash_alert' %>
 	<h1><%= @model[:name].pluralize.gsub(/_/, ' ') %></h1>
 	<%= link_to "Add #{@model[:name].gsub(/_/, ' ')}", url_for(["new_#{@model[:name].downcase}"]), {class: 'btn btn-success btn-sm'} %>
-	
+	<div class="search_container"><input type="search" placeholder="Search" id="index_search" /> </div>
 	<ul class="index_list">
 		<% @model[:items].each do |item| %>
 			<li>
