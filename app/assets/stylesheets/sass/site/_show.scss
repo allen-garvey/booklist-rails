@@ -1,6 +1,7 @@
 /*
  * Styles for show pages
  */
+ $sublist_indent: 2em;
 %show_category{
 	display: flex;
 	.heading{
@@ -29,8 +30,11 @@
  		margin-bottom: 2em;
  	}
  	.show_subcategory{
- 		padding-left: 2em;
+ 		padding-left: $sublist_indent;
  	}
+ }
+ .indented_list{
+ 	padding-left: $sublist_indent;
  }
 
 
@@ -50,5 +54,7 @@
 		vertical-align: text-top;
 	}
 }
-
+.show_category{
+	margin-bottom: 2rem;
+}
 
