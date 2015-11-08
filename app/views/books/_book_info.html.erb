@@ -1,0 +1,10 @@
+<% if info_data %>
+	<% 
+		if defined? link and link
+			data = link_to(info_data, info_data)
+		else
+			data = info_data
+		end
+	 %>
+	<p><strong><%= "#{info_title.titleize}:" %></strong> <%= data %></p>
+<% end %>
