@@ -15,6 +15,10 @@
  .show_header{
  	@extend %show_category;
  	margin-bottom: 1em;
+ 	.btn_search{
+ 		width: 1.5em;
+ 		height: 1.5em;
+ 	}
  }
  .show_category_header{
  	@extend %show_category;
