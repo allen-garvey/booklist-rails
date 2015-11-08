@@ -14,7 +14,7 @@
 
  .show_header{
  	@extend %show_category;
- 	margin-bottom: 1em;
+ 	margin-bottom: 0.1rem;
  	.btn_search{
  		width: 1.5em;
  		height: 1.5em;
@@ -34,3 +34,9 @@
  }
 
 
+.show_info_container{
+	margin-bottom: 2rem;
+	p{
+		margin-bottom: 0.5em;
+	}
+}
