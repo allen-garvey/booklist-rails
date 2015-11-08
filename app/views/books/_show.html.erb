@@ -1,7 +1,10 @@
-<p><%= link_to @book.author, @book.author if @book.author %></p>
-<p><%= @book.classification %></p>
-<p><%= @book.genre %></p>
-<p><%= @book.pre_rating %></p>
+<div class="show_info_container">
+	<p><strong>Author:</strong> <%= link_to @book.author, @book.author if @book.author %></p>
+	<p><strong>Classification:</strong> <%= @book.classification %></p>
+	<p><strong>Genre:</strong> <%= @book.genre %></p>
+	<p><strong>Pre-rating:</strong> <%= @book.pre_rating %></p>
+	<p><strong>Date added:</strong> <%= DateFormatter.default_format(@book.date_added) %></p>
+</div>
 <div>
 	<div class="show_category_header">
 		<h3 class="heading">Lists</h3>
@@ -60,4 +63,3 @@
 			<% end %>
 		</ul>
 	</div>
-<p><%= DateFormatter.default_format(@book.date_added) %></p>
