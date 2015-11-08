@@ -5,14 +5,14 @@
 	<%= render 'book_info', info_title: 'pre-rating', info_data: @book.pre_rating %>
 	<%= render 'book_info', info_title: 'date added', info_data: DateFormatter.default_format(@book.date_added) %>
 </div>
-<div>
+<div class="show_category">
 	<div class="show_category_header">
 		<h3 class="heading">Lists</h3>
 		<div class="btn_group">
 			<%= link_to 'Add to list', new_list_book_url(book: @book.id), {class: 'btn btn-success'} %>
 		</div>
 	</div>
-		<ul class="show_categories_list">
+		<ul class="show_categories_list indented_list">
 			<% @book.lists.each do |list| %>
 				<% list_book = (list.list_books & @book.list_books)[0] %>
 				<li>
@@ -25,14 +25,14 @@
 	 		<% end %>
 	 	</ul>
 </div>
-<div>
+<div class="show_category">
 	<div class="show_category_header">
 		<h3 class="heading">Locations</h3>
 		<div class="btn_group">
 			<%= link_to 'Add to location', new_book_location_url(book: @book.id), {class: 'btn btn-success'} %>
 		</div>
 	</div>
-		<ul class="show_categories_list">
+		<ul class="show_categories_list indented_list">
 			<% @book.book_locations.each do |book_location| %>
 				<li>
 					<%= link_to "#{book_location.location} - #{book_location.calculated_call_num}", edit_polymorphic_url(book_location, book: @book.id) %>
@@ -44,14 +44,14 @@
 	 		<% end %>
 	 	</ul>
 </div>
-<div>
+<div class="show_category">
 	<div class="show_category_header">
 		<h3 class="heading">Ratings</h3>
 			<div class="btn_group">
 				<%= link_to 'Add Rating', new_rating_url(book: @book.id), {class: 'btn btn-success'} %>
 			</div>
 	</div>
-		<ul class="show_categories_list">
+		<ul class="show_categories_list indented_list">
 			<% @book.ratings.each do |rating| %>
 				<li>
 					<%= link_to rating, rating %>
