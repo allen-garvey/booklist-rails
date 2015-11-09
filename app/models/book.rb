@@ -27,6 +27,9 @@ class Book < ActiveRecord::Base
 	after_initialize :init
 	def init
 		self.date_added ||= Date.today
+		if !self.active and self.active != false
+			self.active = true
+		end
 	end
 	def to_s
 		self.title
