@@ -34,5 +34,8 @@ class Book < ActiveRecord::Base
 	def to_s
 		self.title
 	end
+	def active?
+		self.active
+	end
 	
 end
