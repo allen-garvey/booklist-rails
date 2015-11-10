@@ -25,10 +25,17 @@ class Book < ActiveRecord::Base
 	has_many :locations, through: :book_locations
 	
 	after_initialize :init
+	before_save :check_active
+
 	def init
 		self.date_added ||= Date.today
-		if !self.active and self.active != false
+		if self.active.nil?
 			self.active = true
+		end
+	end
+	def check_active
+		if self.active.nil?
+			self.active = "false" #required for boolean to work correctly with postgres for some reason
 		end
 	end
 	def to_s
@@ -37,5 +44,4 @@ class Book < ActiveRecord::Base
 	def active?
 		self.active
 	end
-	
 end
