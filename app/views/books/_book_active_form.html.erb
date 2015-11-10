@@ -1,0 +1,16 @@
+<%= form_for @model_name.to_sym, url: polymorphic_url(@book), method: :patch do |f| %>
+	<div class="hidden">
+		<%= f.label :active %>
+		<%= f.check_box :active %>
+	</div>
+	<% 
+		if @book.active?
+			submit_class = 'btn-success'
+			submit_text = 'Active'
+		else
+			submit_class = 'btn-default'
+			submit_text = 'Inactive'
+		end
+	 %>
+	<%= f.submit submit_text, class: "btn #{submit_class}" %>
+<% end %>
