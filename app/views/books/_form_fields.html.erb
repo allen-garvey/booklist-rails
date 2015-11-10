@@ -41,5 +41,11 @@
 	<%= f.label :pre_rating %><br/>
 	<%= f.number_field :pre_rating, {min: Book.pre_rating_min, max: Book.pre_rating_max} %>
 <% end %>
-
+<div class="hidden">
+	<% 
+		active_state = @book ? @book.active? : true
+	 %>
+	<%= f.label :active %>
+	<%= f.check_box :active, {checked: active_state} %>
+</div>
 <%= render 'shared/submit_button', f: f %>
