@@ -1,7 +1,7 @@
 <%= form_for @model_name.to_sym, url: polymorphic_url(@book), method: :patch do |f| %>
 	<div class="hidden">
 		<%= f.label :active %>
-		<%= f.check_box :active %>
+		<%= f.check_box :active, {checked: !@book.active?} %>
 	</div>
 	<% 
 		if @book.active?
