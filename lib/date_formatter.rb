@@ -2,6 +2,10 @@
 class DateFormatter
 	#takes date object and returns string representation
 	def self.default_format(date)
-		date.strftime('%m/%d/%Y')
+		if date.nil?
+			nil
+		else
+			date.strftime('%m/%d/%Y')
+		end
 	end
 end
