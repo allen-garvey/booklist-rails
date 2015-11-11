@@ -5,6 +5,7 @@
 	<%= render 'book_info', info_title: 'genre', info_data: @book.genre, link: true %>
 	<%= render 'book_info', info_title: 'pre-rating', info_data: @book.pre_rating %>
 	<%= render 'book_info', info_title: 'date added', info_data: DateFormatter.default_format(@book.date_added) %>
+	<%= render 'book_info', info_title: 'release date', info_data: DateFormatter.default_format(@book.release_date) %>
 </div>
 <div class="show_category">
 	<div class="show_category_header">
