@@ -19,15 +19,21 @@
 <%= render layout: 'shared/form_group' do %>
 	<%= f.label :location_id %><br/>
 	<%= f.select(:location_id, nil, {:include_blank => true}) do %>
-		<% @locations.each do |location| %>
-			<%
-				if @book_location
-					selected = location.id == @book_location.location_id	
-				elsif @location_id
-					selected = location.id == @location_id
-				end
-			%>
-			<%= content_tag(:option, location, value: location.id, selected: selected) %>
+		<% @libraries.each do |library| %>
+			<optgroup label="<%= library %>">
+			<% @locations.each do |location| %>
+				<% if location.library == library %>	
+					<%
+						if @book_location
+							selected = location.id == @book_location.location_id	
+						elsif @location_id
+							selected = location.id == @location_id
+						end
+					%>
+					<%= content_tag(:option, location.short_name, value: location.id, selected: selected) %>
+				<% end %>
+			<% end %>
+			</optgroup>
 		<% end %>
 	<% end %>
 <% end %>
