@@ -6,7 +6,7 @@
 	<ul class="index_list" id="index_list">
 		<% @model[:items].each do |item| %>
 			<li>
-				<%= link_to item, item %>
+				<%= link_to item, item, {class: 'js_item_link'} %>
 				<div class="btn_group">
 					<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(item.to_s), {class: 'btn btn-primary btn-sm btn_search'} %>
 				</div>
