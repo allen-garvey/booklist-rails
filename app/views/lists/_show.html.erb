@@ -2,13 +2,15 @@
 <%= link_to 'Add Book', new_list_book_url(list: @list.id), {class: 'btn btn-success'} %>
 <ol>
 	<% @list.books.each do |book|  %>
-		<% list_book = (book.list_books & @list.list_books)[0] %>
-		<li>
-			<%= link_to book, book %>
-			<%= link_to 'Remove', polymorphic_url(list_book, list: @list.id), {
-															method: :delete, class: 'btn btn-danger btn-xs',
-															data: {confirm: "Are you sure you want to remove #{book} from #{@list}?"}
-														} %>
-		</li>
+		<% if book.active? %>
+			<% list_book = (book.list_books & @list.list_books)[0] %>
+			<li>
+				<%= link_to book, book %>
+				<%= link_to 'Remove', polymorphic_url(list_book, list: @list.id), {
+																method: :delete, class: 'btn btn-danger btn-xs',
+																data: {confirm: "Are you sure you want to remove #{book} from #{@list}?"}
+															} %>
+			</li>
+		<% end %>
 	<% end %>
 </ol>
