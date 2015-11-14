@@ -3,6 +3,9 @@ class Book < ActiveRecord::Base
 	def self.default_order
 		self.order(title: :asc)
 	end
+	def self.active_ordered(is_active)
+		self.where('active = ?', is_active).order(title: :asc)
+	end
 	def self.pre_rating_min
 		1
 	end
