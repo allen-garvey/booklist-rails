@@ -23,4 +23,13 @@ class BooksController < BaseController
             super
         end
     end
+    def set_index_session_params
+        if params[:active] and params[:active] == 'true'
+            session[:index_link_params] = {active: true}
+        elsif params[:active] and params[:active] == 'false'
+            session[:index_link_params] = {active: false}
+        else
+            session[:index_link_params] = nil
+        end
+    end
 end
