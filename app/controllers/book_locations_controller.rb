@@ -6,6 +6,7 @@ class BookLocationsController < BaseController
     def related_fields
         @books = Book.default_order
         @locations = Location.default_order
+        @libraries = Library.default_order #required for opt-groups on form fields
         if defined? @location_id
             @books = @books - Book.joins(:book_locations).where("book_locations.location_id = ?", @location_id)
         end
