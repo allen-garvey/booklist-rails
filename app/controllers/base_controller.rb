@@ -1,6 +1,6 @@
 class BaseController < ApplicationController
     def index
-        @items = model().default_order
+        @items = index_model
         @model = {name: model_title, items: @items}
         render template: 'shared/index'
     end
@@ -163,5 +163,9 @@ class BaseController < ApplicationController
     #place calls to get models that are related to model e.g. Authors.all in books
     def related_fields
         
+    end
+    #hook to set model used in index
+    def index_model
+        model().default_order
     end
 end
