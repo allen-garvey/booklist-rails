@@ -13,4 +13,7 @@ class Location < ActiveRecord::Base
 	def to_s
 		"#{self.library} - #{self.name}"
 	end
+	def short_name
+		self.name
+	end
 end
