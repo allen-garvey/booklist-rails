@@ -1,5 +1,13 @@
 <div class="container">
-	<%= link_to image_tag('ei-chevron-left.svg', {class: 'icon'}) + "Back to All #{@model_name.titleize.pluralize}", url_for([@model_name.pluralize]), {class: 'back_link'} %>
+	<% 
+		if defined? session[:index_link_params]
+			index_link = url_for([@model_name.pluralize, session[:index_link_params]])
+		else
+			index_link = url_for([@model_name.pluralize])
+		end
+	 %>
+
+	<%= link_to image_tag('ei-chevron-left.svg', {class: 'icon'}) + "Back to All #{@model_name.titleize.pluralize}", index_link, {class: 'back_link'} %>
 
 	<%= render 'shared/flash_alert' %>
 	<div class="show_header">
