@@ -2,6 +2,7 @@ class BaseController < ApplicationController
     def index
         @items = index_model
         @model = {name: model_title, items: @items}
+        set_index_session_params
         render template: 'shared/index'
     end
     def show
@@ -167,5 +168,8 @@ class BaseController < ApplicationController
     #hook to set model used in index
     def index_model
         model().default_order
+    end
+    #hook to set session params before index is shown
+    def set_index_session_params
     end
 end
