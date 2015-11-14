@@ -14,4 +14,13 @@ class BooksController < BaseController
     def model_name
         'book'
     end
+    def index_model
+        if params[:active] and params[:active] == 'true'
+            Book.active_ordered true
+        elsif params[:active] and params[:active] == 'false'
+            Book.active_ordered false
+        else
+            super
+        end
+    end
 end
