@@ -6,7 +6,7 @@
 </header>
 <div class="container home_section_container">
 	<div class="home_section">
-		<h2 class="home_section_heading"><%= link_to 'Books', books_url %></h2>
+		<h2 class="home_section_heading"><%= link_to 'Books', books_url({active: true}) %></h2>
 		<p class="description">All your books</p>
 		<%= link_to 'Add Book', new_book_url, {class: 'btn btn-success'} %>
 	</div>
