@@ -1,27 +1,6 @@
 /*
  * Filtering for index page
  */
-var BL = BL || {};
-//foreach for arrays and array-like objects
-BL.each = function(list, func){
-	var len = list.length;
-	for (var i = 0; i < len; i++) {
-		func.call(list[i], list[i], i);
-	};
-};
-//gets closest parent that matches selector
-BL.closest = function(el, tag) {
-  // this is necessary since nodeName is always in upper case
-  tag = tag.toUpperCase();
-  do {
-    if (el.nodeName === tag) {
-      return el;
-    }
-  } while (el = el.parentNode);
-
-  return null;
-};
-
 (function(){
     var index_list_links = document.querySelectorAll('#index_list .js_item_link');
     if(index_list_links.length < 1){
