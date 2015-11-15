@@ -1,5 +1,5 @@
 <%= link_to 'Add book', new_book_location_url(url_params), {class: 'btn btn-success btn-sm'} %>
-<ul>
+<ul class='show_subcategory_list'>
 	<% location.books.each do |book| %>
 		<% if book.active? %>
 			<% book_location = (book.book_locations & location.book_locations)[0] %>

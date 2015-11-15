@@ -1,6 +1,6 @@
 <h3>Books</h3>
 <%= link_to 'Add Book', new_list_book_url(list: @list.id), {class: 'btn btn-success'} %>
-<ol>
+<ol class='show_subcategory_list'>
 	<% @list.books.each do |book|  %>
 		<% if book.active? %>
 			<% list_book = (book.list_books & @list.list_books)[0] %>
