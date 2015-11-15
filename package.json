@@ -1,0 +1,26 @@
+{
+  "name": "booklist",
+  "version": "1.0.0",
+  "description": "Rails app to display list of books to read",
+  "main": "bin/rails.sh",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allen-garvey/booklist-rails.git"
+  },
+  "author": "Allen Garvey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/allen-garvey/booklist-rails/issues"
+  },
+  "homepage": "https://github.com/allen-garvey/booklist-rails",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0"
+  }
+}
