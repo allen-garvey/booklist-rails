@@ -68,3 +68,9 @@ bower.json
 *.jpeg
 *.png
 *.svg
+
+
+# compiled js
+*.min.js
+*.js.map
+app/assets/javascripts/app.js
