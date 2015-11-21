@@ -17,20 +17,32 @@
 	.btn{
 		color: white;
 	}
+	.nav_container{
+		display: flex;
+		justify-content: space-between;
+		@include media_q_inverse(sm){
+			flex-direction: column;
+		}
+	}
 	.nav_heading{
 		@include font_brand;
 	}
+
 	.nav_links{
 		@include font_size(2);
 		font-weight: 100;
 		margin-top: 0.1em;
+		margin-bottom: 0;
 		@include media_q(sm){
 			float: right;
 		}
-		a{
+		li{
 			margin-right: 0.5rem;
+			@include media_q(sm){
+				display: inline-block;
+			}
 		}
-		a:last-of-type{
+		li:last-of-type{
 			margin-right: 0;
 		}
 	}
