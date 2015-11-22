@@ -19,10 +19,7 @@
 				<% list_book = (list.list_books & @book.list_books)[0] %>
 				<li>
 					<%= link_to list, list %>
-					<%= link_to 'Remove', polymorphic_url(list_book, book: @book.id), {
-																method: :delete, class: 'btn btn-danger btn-xs',
-																data: {confirm: "Are you sure you want to remove #{@book} from #{list}?"}
-															} %>
+					<%= render 'shared/delete_button', button_text: 'Remove', delete_url: polymorphic_url(list_book, book: @book.id), confirm_text: "Are you sure you want to remove #{@book} from #{list}?" %>
 				</li>
 	 		<% end %>
 	 	</ul>
@@ -38,10 +35,7 @@
 			<% @book.book_locations.each do |book_location| %>
 				<li>
 					<%= link_to "#{book_location.location} - #{book_location.calculated_call_num}", edit_polymorphic_url(book_location, book: @book.id) %>
-					<%= link_to 'Remove', polymorphic_url(book_location, book: @book.id), {
-																method: :delete, class: 'btn btn-danger btn-xs',
-																data: {confirm: "Are you sure you want to remove #{@book} from #{book_location.location}?"}
-															} %>
+					<%= render 'shared/delete_button', button_text: 'Remove', delete_url: polymorphic_url(book_location, book: @book.id), confirm_text: "Are you sure you want to remove #{@book} from #{book_location.location}?" %>
 				</li>
 	 		<% end %>
 	 	</ul>
@@ -57,10 +51,7 @@
 			<% @book.ratings.each do |rating| %>
 				<li>
 					<%= link_to rating, rating %>
-					<%= link_to 'Delete', polymorphic_url(rating, book: @book.id), {
-																	method: :delete, class: 'btn btn-danger btn-xs',
-																	data: {confirm: "Are you sure you want to delete #{rating}?"}
-																} %>
+					<%= render 'shared/delete_button', button_text: 'Delete', delete_url: polymorphic_url(rating, book: @book.id), confirm_text: "Are you sure you want to delete #{rating}?" %>
 				</li>
 			<% end %>
 		</ul>
