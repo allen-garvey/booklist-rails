@@ -1,0 +1,11 @@
+<% 
+	button_text = 'Delete' if local_assigns[:button_text].nil?
+	delete_model = @model_name.to_sym if local_assigns[:delete_model].nil?
+	delete_url = polymorphic_url(@item) if local_assigns[:delete_url].nil?
+	confirm_text = "Are you sure you want to delete #{@item}?" if local_assigns[:confirm_text].nil?
+	button_class = "btn btn-danger btn-xs" if local_assigns[:button_class].nil?
+%>
+
+<%= form_for delete_model, url: delete_url, html: {class: 'delete_button_form', "data-confirm": confirm_text}, method: :delete do |f| %>
+	<%= f.submit button_text, class: button_class %>
+<% end %>
