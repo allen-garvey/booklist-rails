@@ -18,7 +18,7 @@
 <% if !@classifications.empty? %>
 	<%= render layout: 'shared/form_group' do %>
 		<%= f.label :classification_id %>
-		<div>
+		<div class="radio_group">
 			<% @classifications.each do |classification| %>
 				<%= f.radio_button :classification_id, classification.id %>
 				<%= f.label :classification_id, classification, {value: classification.id}  %>
