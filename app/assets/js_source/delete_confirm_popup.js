@@ -7,10 +7,12 @@
     	item.onsubmit = function(event){
 	    	event.preventDefault();
 	    	var message = this.getAttribute('data-confirm');
-	    	var shouldDelete = window.confirm(message);
-	    	if(shouldDelete){
-	    		this.submit();
-	    	}
+	    	var callingForm = this;
+	    	BL.modal.show(function(){
+	    		callingForm.submit();
+	    	}, {
+	    		modal_text: message
+	    	});
 	    };
     });
 })();
