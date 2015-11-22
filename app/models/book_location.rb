@@ -22,6 +22,13 @@ class BookLocation < ActiveRecord::Base
   		    nil
         end
     end
+    def short_name
+        if calculated_call_num
+            calculated_call_num
+        else
+            self.book.to_s
+        end
+    end
 
     def to_s
         if calculated_call_num
