@@ -25,5 +25,10 @@ module Booklist
 
     #load lib directory on startup
     config.autoload_paths << Rails.root.join('lib')
+
+    #for bootstrap form errors
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+        "<div class=\"field_with_errors has-error\">#{html_tag}</div>".html_safe
+    }
   end
 end
