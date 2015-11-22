@@ -5,7 +5,9 @@
 			<% book_location = (book.book_locations & location.book_locations)[0] %>
 			<li>
 				<%= link_to book, book %>
-				<%= link_to book_location.short_name, SuperSearch.url_for_engine(location.library.super_search_url, book.to_s) %>
+				<% if location.library.super_search_url  %>
+					<%= link_to book_location.short_name, SuperSearch.url_for_engine(location.library.super_search_url, book.to_s), {class: 'super_search_link'} %>
+				<% end %>
 				<%= link_to 'Remove', polymorphic_url(book_location, url_params), {
 																								method: :delete, class: 'btn btn-danger btn-xs',
 																								data: {confirm: "Are you sure you want to remove #{book} from #{location}?"}
