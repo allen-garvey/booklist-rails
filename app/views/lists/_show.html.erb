@@ -6,10 +6,7 @@
 			<% list_book = (book.list_books & @list.list_books)[0] %>
 			<li>
 				<%= link_to book, book %>
-				<%= link_to 'Remove', polymorphic_url(list_book, list: @list.id), {
-																method: :delete, class: 'btn btn-danger btn-xs',
-																data: {confirm: "Are you sure you want to remove #{book} from #{@list}?"}
-															} %>
+				<%= render 'shared/delete_button', button_text: 'Remove', delete_url: polymorphic_url(list_book, list: @list.id), confirm_text: "Are you sure you want to remove #{book} from #{@list}?" %>
 				<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(book.to_s), {class: 'btn btn-primary btn-xs btn_search'} %>
 			</li>
 		<% end %>
