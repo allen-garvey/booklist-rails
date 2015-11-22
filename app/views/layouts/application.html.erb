@@ -27,6 +27,16 @@
 		<li><%= link_to 'Fields', fields_url %></li>
 	</ul>
 </div>
+<div class="modal_container" id="modal_container" style="display:none;">
+	<div class="modal_overlay" id="modal_overlay"></div>
+	<div class="modal" id="modal">
+		<div class="modal_body" id="modal_body"></div>
+		<div class="modal_buttons">
+			<button class="btn btn-default" id="modal_cancel"></button>
+			<button class="btn btn-danger" id="modal_confirm"></button>
+		</div>
+    </div>
+</div>
 <%= javascript_include_tag "app.min" %> 
 </body>
 </html>
