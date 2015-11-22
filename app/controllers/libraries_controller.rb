@@ -11,7 +11,7 @@ class LibrariesController < BaseController
     end
     protected
     def model_params
-        params.require(:library).permit(:name, :url)
+        params.require(:library).permit(:name, :url, :super_search_url)
     end
     def model
         Library
