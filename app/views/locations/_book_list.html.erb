@@ -8,10 +8,8 @@
 				<% if location.library.super_search_url  %>
 					<%= link_to book_location.short_name, SuperSearch.url_for_engine(location.library.super_search_url, book.to_s), {class: 'super_search_link'} %>
 				<% end %>
-				<%= link_to 'Remove', polymorphic_url(book_location, url_params), {
-																								method: :delete, class: 'btn btn-danger btn-xs',
-																								data: {confirm: "Are you sure you want to remove #{book} from #{location}?"}
-																								} %>
+				<%= render 'shared/delete_button', button_text: 'Remove', delete_url: polymorphic_url(book_location, url_params), confirm_text: "Are you sure you want to remove #{book} from #{location}?" %>
+				
 				<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(book.to_s), {class: 'btn btn-primary btn-xs btn_search'} %>
 			</li>
 		<% end %>
