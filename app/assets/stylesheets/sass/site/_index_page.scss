@@ -29,12 +29,16 @@
  	}
  }
 .search_container{
-	@include font_size(1);
 	padding-top: 1rem;
 	input{
-		width: 100%;
-		@include media_q(sm){
-			width: 15em;
+		@include font_size(1);
+		box-sizing: border-box;
+		height: 2.5em;
+		width: 15em;
+		transition-property: width;
+		transition-duration: 0.5s;
+		&:focus{
+			width: 100%;
 		}
 	}
 }
