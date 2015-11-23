@@ -1,0 +1,10 @@
+/*
+* Site base styles
+*/
+
+.form-control{
+	@include font_size(1);
+	box-sizing: border-box;
+	height: 2.2em;
+}
+
