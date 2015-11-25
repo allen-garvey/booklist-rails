@@ -8,7 +8,7 @@
 	    	event.preventDefault();
 	    	var message = this.getAttribute('data-confirm');
 	    	var callingForm = this;
-	    	BL.modal.show(function(){
+	    	BL.modal.confirm(function(){
 	    		callingForm.submit();
 	    	}, {
 	    		modal_text: message
