@@ -66,16 +66,19 @@
 	margin-top: 1em;
 	li{
 		margin-bottom: 1em;
-		a:first-of-type{
-			display: inline-block;
-			vertical-align: top;
-			width: 20em;
-		}
-		.super_search_link{
-			display: inline-block;
-			vertical-align: top;
-			width: 10em;
-		}
+	}
+	& > li a:first-child{
+		display: inline-block;
+		vertical-align: top;
+		width: 20em;
+	}
+	.super_search_link{
+		display: inline-block;
+		vertical-align: top;
+		width: 10em;
+	}
+	.btn_group{
+		display: inline-block;
 	}
 }
 .book_active_form{
