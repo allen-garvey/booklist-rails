@@ -1,18 +1,23 @@
 BL.modal = {};
 
-BL.modal.hide = function(){
-	document.getElementById('modal_container').style.display = 'none';
-};
+(function(){
 
-BL.modal.show = function(confirmFunc, options){
-	options = options || {};
-	document.getElementById('modal_body').innerHTML = options.modal_text || "";
-	var confirm_button = document.getElementById('modal_confirm');
-	confirm_button.innerHTML = options.confirm_button_text || 'Delete';
-	document.getElementById('modal_cancel').innerHTML = options.cancel_button_text || 'Cancel';
-	document.getElementById('modal_container').style.display = '';
-	confirm_button.onclick = confirmFunc;
-};
+	BL.modal.hide = function(){
+		document.getElementById('modal_container').style.display = 'none';
+	};
 
-document.getElementById('modal_cancel').onclick = BL.modal.hide;
-document.getElementById('modal_overlay').onclick = BL.modal.hide;
+	BL.modal.show = function(confirmFunc, options){
+		options = options || {};
+		document.getElementById('modal_body').innerHTML = options.modal_text || "";
+		var confirm_button = document.getElementById('modal_alert_confirm');
+		confirm_button.innerHTML = options.confirm_button_text || 'Delete';
+		var cancel_button = document.getElementById('modal_alert_cancel');
+		cancel_button.innerHTML = options.cancel_button_text || 'Cancel';
+		cancel_button.onclick = BL.modal.hide;
+		confirm_button.onclick = confirmFunc;
+		document.getElementById('modal_container').style.display = '';
+	};
+
+	document.getElementById('modal_overlay').onclick = BL.modal.hide;
+    
+})();
