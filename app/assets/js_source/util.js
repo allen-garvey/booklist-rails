@@ -13,18 +13,14 @@ BL.each = function(list, func){
 	};
 };
 
-//gets closest parent that matches selector
-BL.closest = function(el, tag) {
-  // this is necessary since nodeName is always in upper case
-  tag = tag.toUpperCase();
-  do {
-    if (el.nodeName === tag) {
-      return el;
-    }
-  } while (el = el.parentNode);
+//http://stackoverflow.com/questions/22100853/dom-pure-javascript-solution-to-jquery-closest-implementation
+BL.closest = function closest(el, fn) {
+    return el && (
+        fn(el) ? el : closest(el.parentNode, fn)
+    );
+}
 
-  return null;
-};
+
 
 /*
  * similar to jquery ajax

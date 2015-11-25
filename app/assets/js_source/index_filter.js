@@ -13,7 +13,7 @@
     	var search_regex = new RegExp(search_text, 'i');
     	var listFrag = document.createDocumentFragment();
     	BL.each(index_list_links, function(item, i){
-    		var parent_li = BL.closest(this, 'li');
+    		var parent_li = BL.closest(this, function (el) {return el.tagName.toLowerCase() === 'li';});
     		if(search_regex.test(this.text)){
     			listFrag.appendChild(parent_li);
     		}
