@@ -11,7 +11,7 @@ var JS_DEST_DIR = 'app/assets/javascripts/';
 var DIST_NAME = 'app'; //name of compiled file to be served i.e. app.js and app.min.js
 
 gulp.task('concatScripts', function(){
-	return gulp.src(['util', 'modal', 'index_filter', 'delete_confirm_popup'].map(function(file){return JS_SOURCE_DIR + file + '.js';}))
+	return gulp.src(['util', 'modal', 'index_filter', 'delete_confirm_popup', 'barcode_popup'].map(function(file){return JS_SOURCE_DIR + file + '.js';}))
 		.pipe(maps.init())
 		.pipe(concat(DIST_NAME + '.js'))
 		.pipe(maps.write('./'))
