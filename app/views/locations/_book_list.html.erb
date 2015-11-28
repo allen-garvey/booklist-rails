@@ -1,5 +1,5 @@
 <%= link_to 'Add book', new_book_location_url(url_params), {class: 'btn btn-success btn-sm'} %>
-<button data-barcode-trigger="true" class="btn btn-primary btn-xs">Barcode</button>
+<button data-barcode-trigger="true" class="btn btn-primary btn-xs">QR Code</button>
 <ul class='show_subcategory_list'>
 	<% location.books.each do |book| %>
 		<% if book.active? %>
