@@ -4,8 +4,8 @@ A CRUD web-app to save lists of books to read, locations and ratings made with R
 
 ##Dependencies
 
-* Ruby 2.*
-* Rails 4.*
+* Ruby 2.2.*
+* Rails 4.2.*
 * [QRCode.js](https://github.com/davidshimjs/qrcodejs)
 * NPM and gulp to compile JavaScript files
 * PostgreSQL
