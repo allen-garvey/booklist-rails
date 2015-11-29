@@ -3,14 +3,16 @@ class ListBooksController < BaseController
     def model_params
         params.require(:list_book).permit(:book_id, :list_id, :list)
     end
-    def related_fields
+    def related_fields(method)
         @books = Book.default_order
         @lists = List.default_order
-        if defined? @list_id
-            @books = @books - Book.joins(:list_books).where('list_books.list_id = ?', @list_id)
-        end
-        if defined? @book_id
-            @lists = @lists - List.joins(:list_books).where("list_books.book_id = ?", @book_id)
+        if method == 'new' or method == 'create'
+            if defined? @list_id
+                @books = @books - Book.joins(:list_books).where('list_books.list_id = ?', @list_id)
+            end
+            if defined? @book_id
+                @lists = @lists - List.joins(:list_books).where("list_books.book_id = ?", @book_id)
+            end
         end
         if @books.empty? and @lists.empty?
             @related_fields_error = "Please add a book and create a list first"

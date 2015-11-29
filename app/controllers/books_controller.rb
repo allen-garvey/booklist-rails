@@ -3,7 +3,7 @@ class BooksController < BaseController
     def model_params
         params.require(:book).permit(:title, :author_id, :pre_rating, :classification_id, :genre_id, :active, :release_date)
     end
-    def related_fields
+    def related_fields(method)
         @authors = Author.default_order
         @classifications = Classification.default_order
         @genres = Genre.default_order

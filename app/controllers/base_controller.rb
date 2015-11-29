@@ -11,7 +11,7 @@ class BaseController < ApplicationController
     end
     def new
         set_caller_params
-        related_fields
+        related_fields('new')
         if defined? @related_fields_error
             flash[:danger] = @related_fields_error
             url = caller_url
@@ -34,7 +34,7 @@ class BaseController < ApplicationController
             set_view_model model
             @model_name = model_name
             set_caller_params
-            related_fields
+            related_fields('create')
             render_create_failed
         end
     end
@@ -43,7 +43,7 @@ class BaseController < ApplicationController
         @model_name = model_name #used for shared edit view
         set_view_model @item #used for local form_fields partial
         set_caller_params
-        related_fields
+        related_fields('edit')
         render_edit
     end
     
@@ -56,7 +56,7 @@ class BaseController < ApplicationController
             @model_name = model_name #used for shared edit view
             set_view_model @item #used for local form_fields partial
             set_caller_params
-            related_fields
+            related_fields('update')
             redirect_after_update_failed
         end
     end
@@ -162,7 +162,7 @@ class BaseController < ApplicationController
     #     params.require(:book).permit(:title, :author_id, :pre_rating, :classification_id)
     # end
     #place calls to get models that are related to model e.g. Authors.all in books
-    def related_fields
+    def related_fields(method)
         
     end
     #hook to set model used in index

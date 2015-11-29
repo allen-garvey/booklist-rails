@@ -3,15 +3,17 @@ class BookLocationsController < BaseController
     def model_params
         params.require(:book_location).permit(:book_id, :location_id, :call_number)
     end
-    def related_fields
+    def related_fields(method)
         @books = Book.default_order
         @locations = Location.default_order
         @libraries = Library.default_order #required for opt-groups on form fields
-        if defined? @location_id
-            @books = @books - Book.joins(:book_locations).where("book_locations.location_id = ?", @location_id)
-        end
-        if defined? @book_id
-            @locations = @locations - Location.joins(:book_locations).where("book_locations.book_id = ?", @book_id)
+        if method == 'new' or method == 'create'
+            if defined? @location_id
+                @books = @books - Book.joins(:book_locations).where("book_locations.location_id = ?", @location_id)
+            end
+            if defined? @book_id
+                @locations = @locations - Location.joins(:book_locations).where("book_locations.book_id = ?", @book_id)
+            end
         end
         if @books.empty? and @locations.empty?
             @related_fields_error = "Please add a book and location first"

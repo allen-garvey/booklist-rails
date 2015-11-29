@@ -3,7 +3,7 @@ class RatingsController < BaseController
     def model_params
         params.require(:rating).permit(:book_id, :post_rating)
     end
-    def related_fields
+    def related_fields(method)
         @books = Book.default_order
         if @books.empty?
             @related_fields_error = "Please add a book first"

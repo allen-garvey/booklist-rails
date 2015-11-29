@@ -3,7 +3,7 @@ class LocationsController < BaseController
     def model_params
         params.require(:location).permit(:name, :library_id)
     end
-    def related_fields
+    def related_fields(method)
     	@libraries = Library.default_order
         if @libraries.empty?
             @related_fields_error = "Please add a library first"
