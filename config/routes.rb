@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :libraries
   resources :locations
   resources :book_locations
+  resources :library_items
 
   get 'settings/fields', to: 'settings#fields', as: 'fields'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,30 @@
+<%= render 'shared/form_errors', item: @library_item, name: 'library item' %>
+
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :library_id %><br/>
+	<%= f.select(:library_id, nil, {:include_blank => true}) do %>
+		<% @libraries.each do |library| %>
+			<%
+				if @library_item
+					selected = library.id == @library_item.library_id	
+				end
+			%>
+			<%= content_tag(:option, library, value: library.id, selected: selected) %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :due_date %><br/>
+	<%= f.date_field :due_date %>
+<% end %>
+
+
+<%= render layout: 'shared/form_group' do %>
+	<%= f.label :items %><br/>
+	<%= f.number_field :items, {min: 1} %>
+<% end %>
+
+
+<%= render 'shared/submit_button', f: f %>

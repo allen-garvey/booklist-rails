@@ -1,0 +1,6 @@
+<% if @library_item.library.url %>
+	<%= link_to 'Renew items', @library_item.library.url %>
+<% end %>
+<% if @library_item.items %>
+	<p>Items: <%= @library_item.items %></p>
+<% end %>

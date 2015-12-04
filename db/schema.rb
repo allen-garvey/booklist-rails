@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122020717) do
+ActiveRecord::Schema.define(version: 20151204033310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,16 @@ ActiveRecord::Schema.define(version: 20151122020717) do
     t.string   "super_search_url"
   end
 
+  create_table "library_items", force: :cascade do |t|
+    t.integer  "library_id"
+    t.date     "due_date"
+    t.integer  "items"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "library_items", ["library_id"], name: "index_library_items_on_library_id", using: :btree
+
   create_table "list_books", force: :cascade do |t|
     t.integer  "book_id"
     t.integer  "list_id"
@@ -112,6 +122,7 @@ ActiveRecord::Schema.define(version: 20151122020717) do
   add_foreign_key "books", "authors"
   add_foreign_key "books", "classifications"
   add_foreign_key "books", "genres"
+  add_foreign_key "library_items", "libraries"
   add_foreign_key "list_books", "books"
   add_foreign_key "list_books", "lists"
   add_foreign_key "locations", "libraries"
