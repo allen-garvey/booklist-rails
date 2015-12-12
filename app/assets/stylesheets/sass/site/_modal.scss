@@ -2,6 +2,7 @@
 * Styles for modal
 */
 .modal_container{
+	margin-top: 300px;
 	display: flex;
 	z-index: 2;
 	position: absolute;
@@ -50,3 +51,6 @@
 	}
 }
 
+.modal_body img{
+	margin-top: 1em;
+}
