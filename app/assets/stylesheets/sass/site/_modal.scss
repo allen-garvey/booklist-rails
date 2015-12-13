@@ -23,7 +23,8 @@
 }
 .modal{
 	@include font_size(1);
-	overflow: scroll;
+	margin-top: auto;
+	margin-bottom: auto;
 	z-index: 2;
 	background-color: white;
 	padding: 4em 2em 2em;
