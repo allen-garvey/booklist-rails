@@ -2,6 +2,7 @@ class BaseController < ApplicationController
     def index
         @items = index_model
         @model = {name: model_title, items: @items}
+        @show_super_search_links = show_super_search_links_on_index
         set_index_session_params
         render template: 'shared/index'
     end
@@ -171,5 +172,9 @@ class BaseController < ApplicationController
     end
     #hook to set session params before index is shown
     def set_index_session_params
+    end
+    #hook to show super search links on index
+    def show_super_search_links_on_index
+        false 
     end
 end

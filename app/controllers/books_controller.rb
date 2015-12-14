@@ -32,4 +32,7 @@ class BooksController < BaseController
             session[:index_link_params] = nil
         end
     end
+    def show_super_search_links_on_index
+        true
+    end
 end
