@@ -1,10 +1,10 @@
 class Book < ActiveRecord::Base
 	include NormalizeBlankValues
 	def self.default_order
-		self.order(title: :asc)
+		self.order(sort_title: :asc)
 	end
 	def self.active_ordered(is_active)
-		self.where('active = ?', is_active).order(title: :asc)
+		self.where('active = ?', is_active).order(sort_title: :asc)
 	end
 	def self.pre_rating_min
 		1
