@@ -35,6 +35,7 @@ class Book < ActiveRecord::Base
 
 	def init
 		self.date_added ||= Date.today
+		self.sort_title ||= self.title.gsub /^(the|a|an)\s+/i, ''
 		if self.active.nil?
 			self.active = true
 		end
