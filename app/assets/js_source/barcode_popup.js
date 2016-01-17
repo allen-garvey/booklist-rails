@@ -18,8 +18,12 @@ BL.barcode.show = function(){
 		book_list_string = book_list_string + title + ' ' + call_num_string + '\n';
 	});
 	BL.modal.alert({modal_text : book_list_html});
+	BL.barcode.generate(book_list_string);
+};
+
+BL.barcode.generate = function(code_content){
 	new QRCode(document.getElementById("modal_body"), {
-		text : book_list_string,
+		text : code_content,
 		width : 500,
 		height : 500
 	});
