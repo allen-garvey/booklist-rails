@@ -4,6 +4,7 @@
  */
 
 BL.barcode = {};
+BL.barcode.REGENERATION_DELAY_TIME = 2000;
 
 BL.barcode.show = function(){
 	var book_list = BL.closest(this, function(el){return el.className === 'show_subcategory'}).querySelector('.show_subcategory_list');
@@ -47,8 +48,16 @@ BL.barcode.removeListItem = function(caller){
 		return el.tagName.toLowerCase() === 'li';
 	});
 	parent_li.parentNode.removeChild(parent_li);
-	document.getElementById('qr_code').innerHTML = '';
-	BL.barcode.generate(BL.barcode.getBarcodeString());
+	
+	//use timeout and clear timeout so qr code regeneration is batched for multiple deletions
+	if(BL.barcode.updateQrCodeTimeout){
+		window.clearTimeout(BL.barcode.updateQrCodeTimeout);
+	}
+
+	BL.barcode.updateQrCodeTimeout = window.setTimeout(function(){
+		document.getElementById('qr_code').innerHTML = '';
+		BL.barcode.generate(BL.barcode.getBarcodeString());
+	},BL.barcode.REGENERATION_DELAY_TIME);
 };
 
 
