@@ -32,10 +32,11 @@ class Book < ActiveRecord::Base
 	
 	after_initialize :init
 	before_save :check_active
+	before_save :update_sort_title
 
 	def init
 		self.date_added ||= Date.today
-		self.sort_title ||= self.title.gsub /^(the|a|an)\s+/i, ''
+		self.sort_title ||= self.calculate_sort_title
 		if self.active.nil?
 			self.active = true
 		end
@@ -45,10 +46,18 @@ class Book < ActiveRecord::Base
 			self.active = "false" #required for boolean to work correctly with postgres for some reason
 		end
 	end
+	def update_sort_title
+		if self.changed.include? 'title'
+			self.sort_title = self.calculate_sort_title
+		end
+	end
 	def to_s
 		self.title
 	end
 	def active?
 		self.active
+	end
+	def calculate_sort_title
+		self.title.gsub /^(the|a|an)\s+/i, ''
 	end
 end
