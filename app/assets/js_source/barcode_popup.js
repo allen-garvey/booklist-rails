@@ -25,11 +25,23 @@ BL.barcode.show = function(){
 };
 
 BL.barcode.generate = function(code_content){
-	new QRCode(document.getElementById("qr_code"), {
-		text : code_content,
-		width : 500,
-		height : 500
-	});
+	var qr_code_element = document.getElementById("qr_code");
+	qr_code_element.title = '';
+	qr_code_element.innerHTML = '';
+	if(BL.barcode.qrCode){
+		BL.barcode.qrCode.clear();
+	}
+	//too long code_content can cause overflow error
+	try{
+		BL.barcode.qrCode = new QRCode(qr_code_element, {
+			text : code_content,
+			width : 500,
+			height : 500
+		});	
+	}
+	catch(e){
+		console.log(e);
+	}
 };
 
 BL.barcode.getBarcodeString = function(){
