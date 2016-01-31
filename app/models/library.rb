@@ -3,10 +3,6 @@ class Library < ActiveRecord::Base
 		self.order(name: :asc)
 	end
 	include NormalizeBlankValues
-	#the name for the library that will act as the bookshelf
-	def self.bookshelf_name
-		'Allen'
-	end
 	validates :name, presence: true
 	validates :name, uniqueness: true
 	has_many :locations, -> { order :name }
