@@ -4,7 +4,10 @@ class Book < ActiveRecord::Base
 		self.order(sort_title: :asc)
 	end
 	def self.active_ordered(is_active)
-		self.where('active = ?', is_active).order(sort_title: :asc)
+		self.where(active: true).where(on_bookshelf: true).order(sort_title: :asc)
+	end
+	def self.bookshelf_books
+		self.where('active = true and on_bookshelf = true').order(sort_title: :asc)
 	end
 	def self.pre_rating_min
 		1
@@ -31,7 +34,7 @@ class Book < ActiveRecord::Base
 	has_many :locations, through: :book_locations
 	
 	after_initialize :init
-	before_save :check_active
+	before_save :check_boolean
 	before_save :update_sort_title
 
 	def init
@@ -40,10 +43,16 @@ class Book < ActiveRecord::Base
 		if self.active.nil?
 			self.active = true
 		end
+		if self.on_bookshelf.nil?
+			self.active = false
+		end
 	end
-	def check_active
+	def check_boolean
 		if self.active.nil?
 			self.active = "false" #required for boolean to work correctly with postgres for some reason
+		end
+		if self.on_bookshelf.nil?
+			self.active = "false"
 		end
 	end
 	def update_sort_title
@@ -56,6 +65,12 @@ class Book < ActiveRecord::Base
 	end
 	def active?
 		self.active
+	end
+	def on_bookshelf?
+		self.on_bookshelf
+	end
+	def looking_for?
+		self.active? and !self.on_bookshelf?
 	end
 	def calculate_sort_title
 		self.title.gsub /^(the|a|an)\s+/i, ''
