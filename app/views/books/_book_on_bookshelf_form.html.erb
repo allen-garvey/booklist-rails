@@ -1,19 +1,19 @@
 <%= form_for @model_name.to_sym, url: polymorphic_url(@book), html: {class: 'book_active_form'},method: :patch do |f| %>
 	<div class="hidden">
-		<%= f.label :active %>
-		<%= f.check_box :active, {checked: !@book.active?} %>
+		<%= f.label :on_bookshelf %>
+		<%= f.check_box :on_bookshelf, {checked: !@book.on_bookshelf?} %>
 	</div>
 	<div class="hidden">
-		<% #required so on_bookshelf is still saved %>
-		<%= f.check_box :on_bookshelf %>
+		<% #required so active is still saved %>
+		<%= f.check_box :active %>
 	</div>
 	<% 
-		if @book.active?
+		if @book.on_bookshelf?
 			submit_class = 'btn-primary'
-			submit_text = 'Active'
+			submit_text = 'On Bookshelf'
 		else
 			submit_class = 'btn-default'
-			submit_text = 'Inactive'
+			submit_text = 'Not On Bookshelf'
 		end
 	 %>
 	<%= f.submit submit_text, class: "btn #{submit_class}" %>
