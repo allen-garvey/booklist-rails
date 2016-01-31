@@ -52,7 +52,7 @@ class Book < ActiveRecord::Base
 			self.active = "false" #required for boolean to work correctly with postgres for some reason
 		end
 		if self.on_bookshelf.nil?
-			self.active = "false"
+			self.on_bookshelf = "false"
 		end
 	end
 	def update_sort_title
