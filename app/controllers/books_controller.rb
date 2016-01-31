@@ -1,7 +1,15 @@
 class BooksController < BaseController
+    def bookshelf
+        @books = Book.bookshelf_books
+        if @books
+            render 'bookshelf'
+        else
+            index
+        end
+    end
     protected
     def model_params
-        params.require(:book).permit(:title, :author_id, :pre_rating, :classification_id, :genre_id, :active, :release_date)
+        params.require(:book).permit(:title, :author_id, :pre_rating, :classification_id, :genre_id, :active, :release_date, :on_bookshelf)
     end
     def related_fields(method)
         @authors = Author.default_order
