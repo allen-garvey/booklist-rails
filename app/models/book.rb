@@ -4,10 +4,10 @@ class Book < ActiveRecord::Base
 		self.order(sort_title: :asc)
 	end
 	def self.active_ordered(is_active)
-		self.where(active: true).where(on_bookshelf: true).order(sort_title: :asc)
+		self.where('active = ?', is_active).order(sort_title: :asc)
 	end
 	def self.bookshelf_books
-		self.where('active = true and on_bookshelf = true').order(sort_title: :asc)
+		self.where(active: true).where(on_bookshelf: true).order(sort_title: :asc)
 	end
 	def self.pre_rating_min
 		1
