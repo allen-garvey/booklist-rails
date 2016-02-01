@@ -1,6 +1,6 @@
 <div class="container show">
 	<h1>Bookshelf</h1>
-	<ul>
+	<ul class="bookshelf_list">
 		<% @books.each do |book| %>
 			<li><%= link_to book, url_for(book) %></li>
 		<% end %>
