@@ -44,7 +44,7 @@ class Book < ActiveRecord::Base
 			self.active = true
 		end
 		if self.on_bookshelf.nil?
-			self.active = false
+			self.on_bookshelf = false
 		end
 	end
 	def check_boolean
