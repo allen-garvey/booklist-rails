@@ -28,6 +28,7 @@
 		<li><%= link_to 'Add Author', new_author_url %></li>
 		<li><%= link_to 'Library Items', library_items_url %></li>
 		<li><%= link_to 'Inactive books', books_url(Book.default_index_params.merge({active: false})) %></li>
+		<li><%= link_to 'Reporting', reporting_url %></li>
 	</ul>
 </div>
 <div class="modal_container" id="modal_container" style="display:none;">
