@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/reporting', to: 'reporting#index', as: 'reporting'
+
   get 'books/index'
 
   # get 'book/index'
