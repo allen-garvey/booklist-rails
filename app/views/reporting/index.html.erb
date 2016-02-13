@@ -2,8 +2,8 @@
 	<h1>Reporting for <%= @current_year %></h1>	
 	<div class="stat_boxes">
 		<%= render 'stat_box', heading: 'Number of Books Read', info: @current_ratings_num %>
-		<%= render 'stat_box', heading: 'Lowest Rating', info: link_to(@current_ratings_min.post_rating, @current_ratings_min) %>
-		<%= render 'stat_box', heading: 'Highest Rating', info: link_to(@current_ratings_max.post_rating, @current_ratings_max) %>
+		<%= render 'stat_box', heading: 'Lowest Rating', info: link_to(@current_ratings_min.short_name, @current_ratings_min) %>
+		<%= render 'stat_box', heading: 'Highest Rating', info: link_to(@current_ratings_max.short_name, @current_ratings_max) %>
 		<%= render 'stat_box', heading: 'Average Rating', info: @current_ratings_average %>
 		
 	</div>
