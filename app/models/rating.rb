@@ -11,6 +11,9 @@ class Rating < ActiveRecord::Base
 	def init
 		self.date_added ||= Date.today
 	end
+	def short_name
+		"#{self.book} #{self.post_rating}"
+	end
 	def to_s
 		"#{self.book} #{self.post_rating} #{DateFormatter.default_format(self.date_added)}"
 	end
