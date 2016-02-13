@@ -1,0 +1,8 @@
+<div class="container">
+	<h1>Reporting</h1>	
+	<div class="stat_boxes">
+		<%= render 'stat_box', heading: 'Highest Rating', info: link_to(@current_ratings_max.post_rating, @current_ratings_max) %>
+		<%= render 'stat_box', heading: 'Average Rating', info: @current_ratings_average %>
+		<%= render 'stat_box', heading: 'Lowest Rating', info: link_to(@current_ratings_min.post_rating, @current_ratings_min) %>
+	</div>
+</div>
