@@ -5,6 +5,24 @@
 		<%= render 'stat_box', heading: 'Lowest Rating', info: link_to(@current_ratings_min.short_name, @current_ratings_min) %>
 		<%= render 'stat_box', heading: 'Highest Rating', info: link_to(@current_ratings_max.short_name, @current_ratings_max) %>
 		<%= render 'stat_box', heading: 'Average Rating', info: @current_ratings_average %>
-		
 	</div>
+	<section class="reporting_books_by_week">
+		<h2>Books Read By Week</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Week</th>
+					<th>Books</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @books_by_week_rows.each do |row| %>
+					<tr>
+						<td><%= row['week'] %></td>
+						<td><%= row['books'] %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</section>
 </div>
