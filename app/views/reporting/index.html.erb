@@ -7,22 +7,24 @@
 		<%= render 'stat_box', heading: 'Average Rating', info: @current_ratings_average %>
 	</div>
 	<section class="reporting_books_by_week">
-		<h2>Books Read By Week</h2>
-		<table>
-			<thead>
-				<tr>
-					<th>Week</th>
-					<th>Books</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @books_by_week_rows.each do |row| %>
-					<tr>
-						<td><%= row['week'] %></td>
-						<td><%= row['books'] %></td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
+		<h2>Books Read Per Week</h2>
+		<div class="books_per_week_chart" id="books_per_week_chart"></div>
 	</section>
 </div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(<%= raw @books_by_week %>);
+
+        var options = {
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('books_per_week_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>

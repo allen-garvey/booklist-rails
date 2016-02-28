@@ -6,6 +6,9 @@ class ReportingController < ApplicationController
 		@current_ratings_max = Rating.where('extract(year from date_added) = ?', @current_year).order(post_rating: :desc).first
 		@current_ratings_min = Rating.where('extract(year from date_added) = ?', @current_year).order(:post_rating).first
 
-		@books_by_week_rows = Rating.connection.select_all "SELECT extract(week FROM date_added) :: BIGINT AS week, count(*) as books FROM ratings WHERE extract(YEAR FROM date_added) = '#{@current_year}' GROUP BY week ORDER BY week"
+		@books_by_week = Rating.connection.select_rows("SELECT extract(week FROM date_added) :: BIGINT AS week, count(*) as books FROM ratings WHERE extract(YEAR FROM date_added) = '#{@current_year}' GROUP BY week ORDER BY week")
+		@books_by_week = @books_by_week.map { |e| [e[0], e[1].to_i]  }
+		@books_by_week.unshift ['Week', 'Books Read']
+
 	end
 end
