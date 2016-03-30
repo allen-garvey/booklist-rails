@@ -4,7 +4,7 @@
 
  .footer{
  	background-color: $color_nav_background;
- 	min-height: 100% - $total_height;
+ 	min-height: 100vh - $total_height;
  	display: flex;
  	align-items: center;
  	a{
