@@ -9,7 +9,7 @@ class BooksController < BaseController
     end
     protected
     def model_params
-        params.require(:book).permit(:title, :author_id, :pre_rating, :classification_id, :genre_id, :active, :release_date, :on_bookshelf)
+        params.require(:book).permit(:title, :author_id, :pre_rating, :classification_id, :genre_id, :active, :release_date, :on_bookshelf, :subtitle)
     end
     def related_fields(method)
         @authors = Author.default_order
