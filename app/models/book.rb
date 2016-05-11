@@ -61,7 +61,11 @@ class Book < ActiveRecord::Base
 		end
 	end
 	def to_s
-		self.title
+		if self.subtitle
+			"#{self.title}: #{self.subtitle}"
+		else
+			self.title
+		end
 	end
 	def active?
 		self.active
