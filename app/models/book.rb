@@ -34,8 +34,10 @@ class Book < ActiveRecord::Base
 	has_many :locations, through: :book_locations
 	
 	after_initialize :init
-	before_save :check_boolean
+	before_save :update_active
+	before_save :update_on_bookshelf
 	before_save :update_sort_title
+	before_save :check_boolean
 
 	def init
 		self.date_added ||= Date.today
@@ -47,9 +49,10 @@ class Book < ActiveRecord::Base
 			self.on_bookshelf = false
 		end
 	end
+	#required for false boolean to work correctly with postgres for some reason
 	def check_boolean
 		if self.active.nil?
-			self.active = "false" #required for boolean to work correctly with postgres for some reason
+			self.active = "false"
 		end
 		if self.on_bookshelf.nil?
 			self.on_bookshelf = "false"
@@ -60,6 +63,18 @@ class Book < ActiveRecord::Base
 			self.sort_title = self.calculate_sort_title
 		end
 	end
+	#book can't be on bookshelf if it is not active
+	def update_active
+		if self.changed.include? 'active' and !self.changed.include? 'on_bookshelf' and !self.active
+			self.on_bookshelf = "false" #required for postgres
+		end
+	end
+	#book must be active if it is on bookshelf
+	def update_on_bookshelf
+		if self.changed.include? 'on_bookshelf' and self.on_bookshelf
+			self.active = "true"
+		end
+	end
 	def to_s
 		if self.subtitle
 			"#{self.title}: #{self.subtitle}"
@@ -67,6 +82,20 @@ class Book < ActiveRecord::Base
 			self.title
 		end
 	end
+	#if on bookshelf, a book must also be active
+	def on_bookshelf=(is_on_bookshelf)
+    	if is_on_bookshelf
+    		# self.active = true
+    	end
+    	super(is_on_bookshelf)
+  	end
+  	#if not active, should not be on bookshelf
+  	def active=(is_active)
+    	unless is_active
+    		# self.on_bookshelf = false
+    	end
+    	super(is_active)
+  	end
 	def active?
 		self.active
 	end
