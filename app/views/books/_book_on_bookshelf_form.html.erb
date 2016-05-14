@@ -3,10 +3,6 @@
 		<%= f.label :on_bookshelf %>
 		<%= f.check_box :on_bookshelf, {checked: !@book.on_bookshelf?} %>
 	</div>
-	<div class="hidden">
-		<% #required so active is still saved %>
-		<%= f.check_box :active %>
-	</div>
 	<% 
 		if @book.on_bookshelf?
 			submit_class = 'btn-primary'
