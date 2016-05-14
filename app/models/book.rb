@@ -82,20 +82,6 @@ class Book < ActiveRecord::Base
 			self.title
 		end
 	end
-	#if on bookshelf, a book must also be active
-	def on_bookshelf=(is_on_bookshelf)
-    	if is_on_bookshelf
-    		# self.active = true
-    	end
-    	super(is_on_bookshelf)
-  	end
-  	#if not active, should not be on bookshelf
-  	def active=(is_active)
-    	unless is_active
-    		# self.on_bookshelf = false
-    	end
-    	super(is_active)
-  	end
 	def active?
 		self.active
 	end
