@@ -82,6 +82,10 @@ class Book < ActiveRecord::Base
 			self.title
 		end
 	end
+	#gives search string to supersearch
+	def to_search_string
+		self.title
+	end
 	def active?
 		self.active
 	end

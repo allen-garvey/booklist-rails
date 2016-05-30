@@ -1,4 +1,5 @@
 class ListBook < ActiveRecord::Base
+	include DefaultSearchString
 	def self.default_order
 		self.order(id: :desc)
 	end

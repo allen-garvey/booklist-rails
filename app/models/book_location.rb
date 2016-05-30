@@ -1,5 +1,6 @@
 class BookLocation < ActiveRecord::Base
     include NormalizeBlankValues
+    include DefaultSearchString
     def self.default_order
         self.order(id: :desc)
     end

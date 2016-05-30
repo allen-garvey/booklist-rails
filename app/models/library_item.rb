@@ -1,5 +1,6 @@
 class LibraryItem < ActiveRecord::Base
-  def self.default_order
+	include DefaultSearchString
+  	def self.default_order
 		self.order(due_date: :asc)
 	end
 	#returns single library item that is due soon or nil

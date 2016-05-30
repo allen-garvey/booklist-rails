@@ -1,4 +1,5 @@
 class Rating < ActiveRecord::Base
+	include DefaultSearchString
 	def self.default_order
 		self.order(date_added: :desc)
 	end

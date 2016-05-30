@@ -1,4 +1,5 @@
 class List < ActiveRecord::Base
+	include DefaultSearchString
 	def self.default_order
 		self.order(name: :asc)
 	end

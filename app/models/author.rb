@@ -1,5 +1,6 @@
 class Author < ActiveRecord::Base
 	include NormalizeBlankValues
+	include DefaultSearchString
 	def self.default_order
 		self.order(last: :asc, first: :asc, middle: :asc)
 	end

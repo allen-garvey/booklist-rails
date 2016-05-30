@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+	include DefaultSearchString
 	def self.default_order
 		self.joins(:library).order('libraries.name asc, name asc')
 	end
