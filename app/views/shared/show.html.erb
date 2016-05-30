@@ -15,7 +15,7 @@
 		<div class="btn_group">
 			<%= link_to "Edit", edit_polymorphic_url(@item), {class: 'btn btn-default btn-xs'} %>
 			<%= render "shared/delete_button" %>
-			<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(@item.to_s), {class: 'btn btn-primary btn-xs btn_search'} %>
+			<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(@item.to_search_string), {class: 'btn btn-primary btn-xs btn_search'} %>
 		</div>	
 	</div>
 	

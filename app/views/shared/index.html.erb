@@ -9,7 +9,7 @@
 				<%= link_to item, item, {class: 'js_item_link'} %>
 				<% if @show_super_search_links %>
 					<div class="btn_group">
-						<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(item.to_s), {class: 'btn btn-primary btn-sm btn_search'} %>
+						<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(item.to_search_string), {class: 'btn btn-primary btn-sm btn_search'} %>
 					</div>
 				<% end %>
 			</li>
