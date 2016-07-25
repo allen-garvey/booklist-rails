@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  # Because apache/passenger is messing up the root route for some reason
+  get '/home', to: 'home#index', as: 'home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
