@@ -10,6 +10,17 @@
 		<h2>Books Read Per Week</h2>
 		<div class="books_per_week_chart" id="books_per_week_chart"></div>
 	</section>
+	<section>
+		<h2>Top Rated Books</h2>
+		<ol class="reporting_top_rated_books_list">
+			<% @top_ratings.each do |rating| %>
+				<li>
+					<span><%= link_to(rating.book, rating.book) %></a></span>
+					<span><%= link_to("#{rating.post_rating} - #{rating.created_at.strftime("%b %d, %Y")}", rating) %></span>
+				</li>
+			<% end %>
+		</ol>
+	</section>
 </div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
