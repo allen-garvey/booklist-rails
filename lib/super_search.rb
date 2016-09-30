@@ -1,6 +1,6 @@
 class SuperSearch
 	def self.url
-		"http://localhost/super-search/"
+		"http://search.startpage.dev/"
 	end
 	def self.query_param_for(item_name)
 		item_name.gsub(/\s+/, '+')
