@@ -15,7 +15,10 @@
 		<div class="btn_group">
 			<%= link_to "Edit", edit_polymorphic_url(@item), {class: 'btn btn-default btn-xs'} %>
 			<%= render "shared/delete_button" %>
-			<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(@item.to_search_string), {class: 'btn btn-primary btn-xs btn_search'} %>
+			<%# Magnifying glass based on: http://stackoverflow.com/questions/12036038/is-there-unicode-glyph-symbol-to-represent-search %>
+			<%= link_to SuperSearch.url_for(@item.to_search_string), {class: 'btn btn-primary btn-xs btn_search'} do %>
+				<div class="search_icon">&#9906;</div>
+			<% end %>
 		</div>	
 	</div>
 	
