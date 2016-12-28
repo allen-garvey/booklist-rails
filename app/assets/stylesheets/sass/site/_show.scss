@@ -52,10 +52,10 @@
 .back_link{
 	display: block;
 	margin-bottom: 0.5em;
-	margin-left: -1em;
-	.icon{
-		height: 1em;
-		vertical-align: text-top;
+	&:before{
+		content: '\2039';
+		font-size: 1.5em;
+		margin-right: 0.2em;
 	}
 }
 .show_category{

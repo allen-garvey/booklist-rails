@@ -7,7 +7,7 @@
 		end
 	 %>
 
-	<%= link_to image_tag('ei-chevron-left.svg', {class: 'icon'}) + "Back to All #{@model_name.titleize.pluralize}", index_link, {class: 'back_link'} %>
+	<%= link_to "Back to All #{@model_name.titleize.pluralize}", index_link, {class: 'back_link'} %>
 
 	<%= render 'shared/flash_alert' %>
 	<div class="show_header">
