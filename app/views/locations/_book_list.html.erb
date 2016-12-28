@@ -12,7 +12,9 @@
 				<div class="btn_group">
 				<%= render 'shared/delete_button', button_text: 'Remove', delete_url: polymorphic_url(book_location, url_params), confirm_text: "Are you sure you want to remove #{book} from #{location}?" %>
 				
-				<%= link_to image_tag('ei-search.svg'), SuperSearch.url_for(book.to_search_string), {class: 'btn btn-primary btn-xs btn_search'} %>
+				<%= link_to SuperSearch.url_for(book.to_search_string), {class: 'btn btn-primary btn-xs btn_search'} do %>
+					<div class="search_icon">&#9906;</div>
+				<% end %>
 				</div>
 			</li>
 		<% end %>
