@@ -31,7 +31,14 @@
         var data = google.visualization.arrayToDataTable(<%= raw @books_by_week %>);
 
         var options = {
-          legend: { position: 'bottom' }
+			legend: { position: 'bottom' },
+			chartArea: {top: 55, height: '40%'},
+			hAxis: {
+				title: 'Week of the year'
+			},
+			vAxis: {
+				title: 'Books read'
+			}
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('books_per_week_chart'));
