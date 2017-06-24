@@ -17,7 +17,14 @@
 
 <%= render layout: 'shared/form_group' do %>
 	<%= f.label :due_date %><br/>
-	<%= f.date_field :due_date %>
+	<%
+		if @library_item
+			due_date_value = @library_item.due_date
+		else
+			due_date_value = LibraryItem.default_due_date
+		end
+	%>
+	<%= f.date_field :due_date, value: due_date_value %>
 <% end %>
 
 
