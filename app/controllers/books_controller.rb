@@ -23,13 +23,18 @@ class BooksController < BaseController
         'book'
     end
     def index_model
+        books = super
         if params[:active] and params[:active] == 'true'
-            Book.active_ordered true
+            books = books.where(active: true)
         elsif params[:active] and params[:active] == 'false'
-            Book.active_ordered false
-        else
-            super
+            books = books.where(active: false)
         end
+        if params[:location] and params[:location] == 'false'
+            books = books.where.not(id: BookLocation.select(:book_id))
+        elsif params[:location] and params[:location] == 'false'
+            books = books.where(id: BookLocation.select(:book_id))
+        end
+        books
     end
     def set_index_session_params
         if params[:active] and params[:active] == 'true'
