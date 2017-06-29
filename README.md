@@ -1,8 +1,8 @@
-#Booklist
+# Booklist
 
 A CRUD web-app to save lists of books to read, locations and ratings made with Ruby on Rails.
 
-##Dependencies
+## Dependencies
 
 * Ruby 2.2.*
 * Rails 4.2.*
@@ -11,7 +11,7 @@ A CRUD web-app to save lists of books to read, locations and ratings made with R
 * PostgreSQL
 * Ruby `pg` gem to connect with PostgreSQL
 
-##Getting Started
+## Getting Started
 
 * Download or clone the project and `cd` into the project directory
 * `cd` into downloaded project directory
@@ -24,6 +24,6 @@ A CRUD web-app to save lists of books to read, locations and ratings made with R
 * Type `bin/rails server` to start the server
 * Once the server has started up, navigate your web-browser of choice to `http://localhost:3000` to view the site
 
-##License
+## License
 
 Booklist is released under the MIT License. See license.txt for more details.
